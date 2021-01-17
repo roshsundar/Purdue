@@ -1,0 +1,26 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ENGR 133 
+% Program Description: Rotate image 180 degrees
+%
+% Assignment Information
+%   Assignment:     Ma4 Task4
+%   Team ID:        LC1-04
+%  	Contributor:    Roshan Sundar
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% ____________________
+%% Function
+function out_img = Ma4_Task4_180_flipped_rmsundar(in_img)
+    out_img = in_img;
+    %Turn in_img 180o by running 2 X 90o 
+    for i=1:2
+        out_img = Ma4_Task4_90_counterclockwise_rmsundar(out_img);
+    end
+end
+
+%% ____________________
+%% ACADEMIC INTEGRITY STATEMENT
+% I have not used source code obtained from any other unauthorized
+% source, either modified or unmodified.  Neither have I provided
+% access to my code to another. The project I am submitting
+% is my own original work.
