@@ -1,0 +1,339 @@
+The following program submission has been recorded:
+
+Student: rmsundar
+Class: CS159
+Section: 15906
+Assignment: hw04.c
+Submission: 2021-03-14 13:41
+
+If the above is incorrect, you are responsible for resubmitting the assignment or seeking assistance from a course staff member prior to the due date! Assignments will never be accepted by e-mail.
+
+If this is for a lab assignment, only one member must be designated to make a submission for the group.  Graders will not evaluate submissions from multiple group members to determine which effort you actually want graded.
+
+*** Please do not reply to this email ***
+
+The contents of the submission:
+     1	/***************************************************************************
+     2	*
+     3	*  Programmer and Purdue Email Address:
+     4	*  1. rmsundar@purdue.edu
+     5	*
+     6	*  Homework #: 4
+     7	*
+     8	*  Academic Integrity Statement:
+     9	*
+    10	*  I have not used source code obtained from any other unauthorized source,
+    11	*  either modified or unmodified.  Neither have I provided access to my code
+    12	*  to another. The effort I am submitting is my own original work.
+    13	*
+    14	*  Day, Time, Location of Lab: DIST
+    15	*
+    16	*  Program Description: User inputs year, day of the week number (0 [Sunday] through 6 [Saturday]), and occurrence numbe. Program determines the corresponding date.
+    17	*
+    18	***************************************************************************/
+    19	
+    20	#include <stdio.h>
+    21	
+    22	#define JAN_DAYS 31
+    23	#define MARCH_DAYS 31
+    24	#define APRIL_DAYS 30
+    25	#define MAY_DAYS 31
+    26	#define JUNE_DAYS 30
+    27	#define JULY_DAYS 31
+    28	#define AUG_DAYS 31
+    29	#define SEPT_DAYS 30
+    30	#define OCT_DAYS 31
+    31	#define NOV_DAYS 30
+    32	#define DEC_DAYS 31
+    33	
+    34	void Input(int*, int*, int*);
+    35	int Calc_first_occ_date(int, int);
+    36	int Calc_feb_days(int);
+    37	int Calc_total_days(int, int);
+    38	void Output(int, int, int, int, int);
+    39	
+    40	int main(void) 
+    41	{
+    42	  //---Declarations---
+    43	  int year = 0; // Year between 1800-2100
+    44	  int day_code = 0; // The code 0-6 repesenting Sunday-Saturday
+    45	  int occurance = 0; // The amount of times the day occurs
+    46	
+    47	  int first_occ_date = 0; // The date of the first occurance of the day
+    48	  int feb_days = 0; // The amount of days in February depending on leap year
+    49	  int total_days = 0; // Total amount of days spanned by the occurance
+    50	
+    51	  //---Executables---
+    52	  Input(&year, &day_code, &occurance);
+    53	  first_occ_date = Calc_first_occ_date(year, day_code);
+    54	  feb_days = Calc_feb_days(year);
+    55	  total_days = Calc_total_days(first_occ_date, occurance);
+    56	  Output(year, occurance, feb_days, total_days, day_code);
+    57	  
+    58	  //---Exit---
+    59	  return(0);
+    60	}
+    61	
+    62	/***************************************************************************
+    63	*
+    64	*  Function Information
+    65	*
+    66	*  Name of Function: Input
+    67	*
+    68	*  Function Return Type: void
+    69	*
+    70	*  Parameters (list data type, name, and comment one per line):
+    71	*    1. int *year // Is a pointer to year variable in main()
+    72	*    2. int *day_code // Is a pointer to day_code variable in main()
+    73	*    3. int *occurance // Is a pointer to occurance variable in main()
+    74	*
+    75	*  Function Description: Gathers user input for year, day_code, occurance in main()
+    76	*
+    77	***************************************************************************/
+    78	void Input(int *year, int *day_code, int *occurance)
+    79	{
+    80	  //---Executables---
+    81	  printf("Enter year number -> ");
+    82	  scanf("%d", year);
+    83	
+    84	  printf("Enter day of week number -> ");
+    85	  scanf("%d", day_code);
+    86	
+    87	  printf("Enter occurrence number -> ");
+    88	  scanf("%d", occurance);
+    89	}
+    90	
+    91	/***************************************************************************
+    92	*
+    93	*  Function Information
+    94	*
+    95	*  Name of Function: Calc_first_occ_date
+    96	*
+    97	*  Function Return Type: int
+    98	*
+    99	*  Parameters (list data type, name, and comment one per line):
+   100	*    1. int year // Year input by user
+   101	*    2. int day_code // Code of the day input by user
+   102	*
+   103	*  Function Description: Calculate the date of the first occurence of user-input day
+   104	*
+   105	***************************************************************************/
+   106	int Calc_first_occ_date(int year, int day_code)
+   107	{
+   108	  //---Declarations---
+   109	  int first_occ_date = 0; // The date of the first occurance of the day
+   110	  int first_day_code = 0; // The code for the first day
+   111	
+   112	  //---Executables---
+   113	  first_day_code = ((year - 1) * 365) + ((year - 1) / 4) - ((year - 1) / 100) + ((year - 1) / 400); // From pg 300 of textbook
+   114	  first_day_code = first_day_code % 7 + 1;
+   115	  first_occ_date = (7 - first_day_code + day_code) % 7 + 1;
+   116	
+   117	  //---Exit---
+   118	  return(first_occ_date);
+   119	}
+   120	
+   121	/***************************************************************************
+   122	*
+   123	*  Function Information
+   124	*
+   125	*  Name of Function: Calc_feb_days
+   126	*
+   127	*  Function Return Type: int
+   128	*
+   129	*  Parameters (list data type, name, and comment one per line):
+   130	*    1. int year // Year input by user
+   131	*
+   132	*  Function Description: Calculate number of days in Februrary depending on leap year
+   133	*
+   134	***************************************************************************/
+   135	int Calc_feb_days(int year)
+   136	{
+   137	  //---Declarations---
+   138	  int feb_days = 0; // The amount of days in February depending on leap year
+   139	
+   140	  //---Executables---
+   141	  if((!(year % 4) && (year % 100)) || !(year % 400))
+   142	  {
+   143	    feb_days = 29;
+   144	  }
+   145	  else
+   146	  {
+   147	    feb_days = 28;
+   148	  }
+   149	
+   150	  //---Exit---
+   151	  return(feb_days);
+   152	}
+   153	
+   154	/***************************************************************************
+   155	*
+   156	*  Function Information
+   157	*
+   158	*  Name of Function: Calc_total_days
+   159	*
+   160	*  Function Return Type: int
+   161	*
+   162	*  Parameters (list data type, name, and comment one per line):
+   163	*    1. int first_occ_date // The date of the first occurance of the day
+   164	*    2. int occurance // The amount of times the day occurs
+   165	*
+   166	*  Function Description: Calcuate total amount of days spanned by the occurance
+   167	*
+   168	***************************************************************************/
+   169	int Calc_total_days(int first_occ_date, int occurance)
+   170	{
+   171	  //---Declarations---
+   172	  int total_days = 0; // Total amount of days spanned by the occurance
+   173	
+   174	  //---Executables---
+   175	  total_days = first_occ_date + ((occurance - 1) * 7);
+   176	
+   177	  //---Exit---
+   178	  return(total_days);
+   179	}
+   180	
+   181	/***************************************************************************
+   182	*
+   183	*  Function Information
+   184	*
+   185	*  Name of Function:
+   186	*
+   187	*  Function Return Type:
+   188	*
+   189	*  Parameters (list data type, name, and comment one per line):
+   190	*    1. int year // Year input by user
+   191	*    2. int occurance // The amount of times the day occurs
+   192	*    3. int feb_days // The amount of days in February depending on leap year
+   193	*    4. int total_days // Total amount of days spanned by the occurance
+   194	*    5. int day_code // The code 0-6 repesenting Sunday-Saturday
+   195	*
+   196	*  Function Description: Output the occurance, year, and date
+   197	*
+   198	***************************************************************************/
+   199	void Output(int year, int occurance, int feb_days, int total_days, int day_code)
+   200	{
+   201	  //---Declarations---
+   202	  int flag = 1; // Used to prevent further unnecessary printing once date is reached
+   203	
+   204	  //---Executables---
+   205	  switch(day_code)
+   206	  {
+   207	    case 0:
+   208	      printf("\nDesired occurrence #%d of Sunday ", occurance);
+   209	      break;
+   210	    case 1:
+   211	      printf("\nDesired occurrence #%d of Monday ", occurance);
+   212	      break;
+   213	    case 2:
+   214	      printf("\nDesired occurrence #%d of Tuesday ", occurance);
+   215	      break;
+   216	    case 3:
+   217	      printf("\nDesired occurrence #%d of Wednesday ", occurance);
+   218	      break;
+   219	    case 4:
+   220	      printf("\nDesired occurrence #%d of Thursday ", occurance);
+   221	      break;
+   222	    case 5:
+   223	      printf("\nDesired occurrence #%d of Friday ", occurance);
+   224	      break;
+   225	    case 6:
+   226	      printf("\nDesired occurrence #%d of Saturday ", occurance);
+   227	      break;
+   228	  }
+   229	
+   230	  if(total_days <= JAN_DAYS && flag == 1)
+   231	  {
+   232	    // January
+   233	    printf("in %d: January %d\n", year, total_days);
+   234	    flag = 0;
+   235	  }
+   236	
+   237	  total_days -= JAN_DAYS;
+   238	  if(total_days <= feb_days && flag == 1)
+   239	  {
+   240	    // February
+   241	    printf("in %d: February %d\n", year, total_days);
+   242	    flag = 0;
+   243	  }
+   244	
+   245	  total_days -= feb_days;
+   246	  if(total_days <= MARCH_DAYS && flag == 1)
+   247	  {
+   248	    // March
+   249	    printf("in %d: March %d\n", year, total_days);
+   250	    flag = 0;
+   251	  }
+   252	
+   253	  total_days -= MARCH_DAYS;
+   254	  if(total_days <= APRIL_DAYS && flag == 1)
+   255	  {
+   256	    // April
+   257	    printf("in %d: April %d\n", year, total_days);
+   258	    flag = 0;
+   259	  }
+   260	
+   261	  total_days -= APRIL_DAYS;
+   262	  if(total_days <= MAY_DAYS && flag == 1)
+   263	  {
+   264	    // May
+   265	    printf("in %d: May %d\n", year, total_days);
+   266	    flag = 0;
+   267	  }
+   268	
+   269	  total_days -= MAY_DAYS;
+   270	  if(total_days <= JUNE_DAYS && flag == 1)
+   271	  {
+   272	    // June
+   273	    printf("in %d: June %d\n", year, total_days);
+   274	    flag = 0;
+   275	  }
+   276	  
+   277	  total_days -= JUNE_DAYS;
+   278	  if(total_days <= JULY_DAYS && flag == 1)
+   279	  {
+   280	    // July
+   281	    printf("in %d: July %d\n", year, total_days);
+   282	    flag = 0;
+   283	  }
+   284	
+   285	  total_days -= JULY_DAYS;
+   286	  if(total_days <= AUG_DAYS && flag == 1)
+   287	  {
+   288	    // August
+   289	    printf("in %d: August %d\n", year, total_days);
+   290	    flag = 0;
+   291	  }
+   292	
+   293	  total_days -= AUG_DAYS;
+   294	  if(total_days <= SEPT_DAYS && flag == 1)
+   295	  {
+   296	    // September
+   297	    printf("in %d: September %d\n", year, total_days);
+   298	    flag = 0;
+   299	  }
+   300	
+   301	  total_days -= SEPT_DAYS;
+   302	  if(total_days <= OCT_DAYS && flag == 1)
+   303	  {
+   304	    // October
+   305	    printf("in %d: October %d\n", year, total_days);
+   306	    flag = 0;
+   307	  }
+   308	
+   309	  total_days -= OCT_DAYS;
+   310	  if(total_days <= NOV_DAYS && flag == 1)
+   311	  {
+   312	    // November
+   313	    printf("in %d: November %d\n", year, total_days);
+   314	    flag = 0;
+   315	  }
+   316	
+   317	  total_days -= NOV_DAYS;
+   318	  if(total_days <= DEC_DAYS && flag == 1)
+   319	  {
+   320	    // December
+   321	    printf("in %d: December %d\n", year, total_days);
+   322	    flag = 0;
+   323	  }
+   324	}

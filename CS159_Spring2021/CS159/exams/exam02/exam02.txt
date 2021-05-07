@@ -1,0 +1,468 @@
+The following program submission has been recorded:
+
+Student: rmsundar
+Class: CS159
+Section: 15906
+Assignment: exam02.c
+Submission: 2021-03-15 01:19
+
+If the above is incorrect, you are responsible for resubmitting the assignment or seeking assistance from a course staff member prior to the due date! Assignments will never be accepted by e-mail.
+
+If this is for a lab assignment, only one member must be designated to make a submission for the group.  Graders will not evaluate submissions from multiple group members to determine which effort you actually want graded.
+
+*** Please do not reply to this email ***
+
+The contents of the submission:
+     1	/***************************************************************************
+     2	*
+     3	*  Programmers and Purdue Email Addresses:
+     4	*  1. rmsundar@purdue.edu
+     5	*
+     6	*  Lab #: exam 2
+     7	*
+     8	*  Academic Integrity Statement:
+     9	*
+    10	*  We have not used source code obtained from any other unauthorized source,
+    11	*  either modified or unmodified.  Neither have we provided access to our code
+    12	*  to another. The effort we are submitting is our own original work.
+    13	*
+    14	*  Day, Time, Location of Lab: DIST
+    15	*
+    16	*  Program Description: User inputs three points that will always create a triangle with a positive area. Program calculates the location of the orthocenter. It creates a triangle that connects the orthocenter to the end points of the largest side in the triangle ABC, for which it calculates the internal angles and type [isosceles, scalene, equilateral] [acute, obtuse, right]
+    17	*
+    18	***************************************************************************/
+    19	#include <stdio.h>
+    20	#include <math.h>
+    21	
+    22	#define M_PI 3.14159265358979323846
+    23	
+    24	void Input(double*, double*, double*, double*, double*, double*);
+    25	double CalcDist(double, double, double, double);
+    26	double CalcAngle(double, double, double);
+    27	double GetOrthoC_x(double, double, double, double, double, double);
+    28	double GetOrthoC_y(double, double, double, double, double, double);
+    29	double CalcIntAngleA(double, double, double, double, double, double);
+    30	double CalcIntAngleB(double, double, double, double, double, double);
+    31	double CalcIntAngleC(double, double, double, double, double, double);
+    32	void Output(double, double, double, double, double);
+    33	
+    34	int main(void)
+    35	{
+    36	  //---Declarations---
+    37	  double x_1 = 0; // x coord of point 1
+    38	  double y_1 = 0; // y coord of point 1
+    39	  double x_2 = 0; // x coord of point 2
+    40	  double y_2 = 0; // y coord of point 2
+    41	  double x_3 = 0; // x coord of point 3
+    42	  double y_3 = 0; // y coord of point 3
+    43	
+    44	  double d_12 = 0; // Distance from point 1 to point 2
+    45	  double d_23 = 0; // Distance from point 2 to point 3
+    46	  double d_31 = 0; // Distance from point 3 to point 1
+    47	
+    48	  double angle_1 = 0; // The degree of angle 1
+    49	  double angle_2 = 0; // The degree of angle 2
+    50	  double angle_3 = 0; // The degree of angle 3
+    51	  
+    52	  double orthc_x = 0; // The x coord of orthocenter
+    53	  double orthc_y = 0; // The y coord of orthocenter
+    54	
+    55	  double d_1O = 0; // Distance from point 1 to orthocenter
+    56	  double d_2O = 0; // Distance from point 2 to orthocenter
+    57	  double d_3O = 0; // Distance from point 3 to orthocenter
+    58	
+    59	  double angle_A = 0; // An angle of the internal triangle
+    60	  double angle_B = 0; // Another angle of the internal triangle
+    61	  double angle_C = 0; // Final angle of the internal triangle
+    62	
+    63	  //---Executables---
+    64	  Input (&x_1, &y_1, &x_2, &y_2, &x_3, &y_3);
+    65	
+    66	  d_12 = CalcDist(x_1, y_1, x_2, y_2);
+    67	  d_23 = CalcDist(x_2, y_2, x_3, y_3);
+    68	  d_31 = CalcDist(x_3, y_3, x_1, y_1);
+    69	
+    70	  angle_1 = CalcAngle(d_31, d_12, d_23);
+    71	  angle_2 = CalcAngle(d_23, d_12, d_31);
+    72	  angle_3 = CalcAngle(d_31, d_23, d_12);
+    73	
+    74	  orthc_x = GetOrthoC_x(x_1, x_2, x_3, angle_1, angle_2, angle_3);
+    75	  orthc_y = GetOrthoC_y(y_1, y_2, y_3, angle_1, angle_2, angle_3);
+    76	
+    77	  d_1O = CalcDist(x_1, y_1, orthc_x, orthc_y);
+    78	  d_2O = CalcDist(x_2, y_2, orthc_x, orthc_y);
+    79	  d_3O = CalcDist(x_3, y_3, orthc_x, orthc_y);
+    80	
+    81	  angle_A = CalcIntAngleA(d_12, d_23, d_31, d_1O, d_2O, d_3O);
+    82	  angle_B = CalcIntAngleB(d_12, d_23, d_31, d_1O, d_2O, d_3O);
+    83	  angle_C = CalcIntAngleC(d_12, d_23, d_31, d_1O, d_2O, d_3O);
+    84	
+    85	  Output(orthc_x, orthc_y, angle_A, angle_B, angle_C);
+    86	
+    87	  //---Exit---
+    88	  return(0);
+    89	}
+    90	
+    91	/***************************************************************************
+    92	*
+    93	*  Function Information
+    94	*
+    95	*  Name of Function: Input
+    96	*
+    97	*  Function Return Type: void
+    98	*
+    99	*  Parameters (list data type, name, and comment one per line):
+   100	*    1. double *x_1 memory address of x_1 in main() 
+   101	*    2. double *y_1 memory address of y_1 in main() 
+   102	*    3. double *x_2 memory address of x_2 in main() 
+   103	*.   4. double *y_2 memory address of y_2 in main() 
+   104	*    5. double *x_3 memory address of x_3 in main() 
+   105	*.   6. double *y_3 memory address of y_3 in main() 
+   106	*
+   107	*  Function Description: Gets user input and fills above variables
+   108	*
+   109	***************************************************************************/
+   110	void Input (double *x_1, double *y_1, double *x_2, double *y_2, double *x_3, double *y_3)
+   111	{
+   112	  //---Executables---
+   113	  printf("Enter point #1 -> ");
+   114	  scanf("%lf%lf", x_1, y_1);
+   115	
+   116	  printf("Enter point #2 -> ");
+   117	  scanf("%lf%lf", x_2, y_2);
+   118	
+   119	  printf("Enter point #3 -> ");
+   120	  scanf("%lf%lf", x_3, y_3);
+   121	}
+   122	
+   123	/***************************************************************************
+   124	*
+   125	*  Function Information
+   126	*
+   127	*  Name of Function: CalcDist
+   128	*
+   129	*  Function Return Type: double
+   130	*
+   131	*  Parameters (list data type, name, and comment one per line):
+   132	*    1. int x_i x coord of starting point
+   133	*    2. int y_i y coord of starting point
+   134	*    3. int x_f x coord of ending point
+   135	*    4. int y_f y coord of ending point
+   136	*
+   137	*  Function Description: Calculates distance between 2 points
+   138	*
+   139	***************************************************************************/
+   140	double CalcDist (double x_i, double y_i, double x_f, double y_f)
+   141	{
+   142	  //---Declarations---
+   143	  double dist = 0; //Distance between 2 points
+   144	
+   145	  //---Executables---
+   146	  dist = sqrt(pow(x_f - x_i, 2) + pow(y_f - y_i, 2));
+   147	
+   148	  //---End---
+   149	  return(dist);
+   150	}
+   151	
+   152	/***************************************************************************
+   153	*
+   154	*  Function Information
+   155	*
+   156	*  Name of Function: CalcAngle
+   157	*
+   158	*  Function Return Type: double 
+   159	*
+   160	*  Parameters (list data type, name, and comment one per line):
+   161	*    1. double side1: side length 1 of a triangle
+   162	*    2. double side2: side length 2 of a triangle
+   163	*    3. double side3: side length 3 of a triangle
+   164	*
+   165	*  Function Description: Calculates a specific angle of a triangle using above value
+   166	*
+   167	***************************************************************************/
+   168	double CalcAngle (double side1, double side2, double side3)
+   169	{
+   170	  //---Declarations--- 
+   171	  double angle = 0; //A specific angle of the triangle
+   172	
+   173	  //---Executables---
+   174	  angle = (acos(((pow(side1, 2) + pow(side2, 2) - pow(side3, 2)) / (2 * side1 * side2))) * 180) / M_PI;
+   175	  
+   176	  //---End---
+   177	  return(angle);
+   178	}
+   179	
+   180	/***************************************************************************
+   181	*
+   182	*  Function Information
+   183	*
+   184	*  Name of Function: GetOrthoC_x
+   185	*
+   186	*  Function Return Type: double
+   187	*
+   188	*  Parameters (list data type, name, and comment one per line):
+   189	*    1. double x_1: get x coordinate of point 1
+   190	*    2. double x_2: get x coordinate of point 2
+   191	*    3. double x_3: get x coordinate of point 3
+   192	*    4. double angle_1: get degree of angle 1
+   193	*    5. double angle_2: get degree of angle 2
+   194	*    6. double angle_3: get degree of angle 3
+   195	*
+   196	*  Function Description: Calculates the x coord of the orthocenter of a triangle
+   197	*
+   198	***************************************************************************/
+   199	double GetOrthoC_x (double x_1, double x_2, double x_3, double angle_1, double angle_2, double angle_3)
+   200	{
+   201	  //---Declarations---
+   202	  double ortho_x; // The x coord of orthocenter of a triangle
+   203	  
+   204	  //---Executables---
+   205	  ortho_x = (x_1 * tan((M_PI *angle_1) / 180) + x_2 * tan((M_PI *angle_2) / 180) + x_3 * tan((M_PI *angle_3) / 180)) / (tan((M_PI *angle_1) / 180) + tan((M_PI *angle_2) / 180) + tan((M_PI *angle_3) / 180));
+   206	
+   207	  ortho_x = fabs(ortho_x) == 0 ? 0 : ortho_x; 
+   208	  
+   209	  //---Exit---
+   210	  return(ortho_x);
+   211	}
+   212	
+   213	/***************************************************************************
+   214	*
+   215	*  Function Information
+   216	*
+   217	*  Name of Function: GetOrthoC_y
+   218	*
+   219	*  Function Return Type: double 
+   220	*
+   221	*  Parameters (list data type, name, and comment one per line):
+   222	*    1. double x_1: get y coordinate of point 1
+   223	*    2. double x_2: get y coordinate of point 2
+   224	*    3. double x_3: get y coordinate of point 3
+   225	*    4. double angle_1: get degree of angle 1
+   226	*    5. double angle_2: get degree of angle 2
+   227	*    6. double angle_3: get degree of angle 3
+   228	*
+   229	*  Function Description: Calculates the y coord of the orthocenter of a triangle
+   230	*
+   231	***************************************************************************/
+   232	double GetOrthoC_y (double y_1, double y_2, double y_3, double angle_1, double angle_2, double angle_3)
+   233	{
+   234	  //---Declarations---
+   235	  double ortho_y; // The y coord of orthocenter of a triangle
+   236	
+   237	  //---Executables---
+   238	  ortho_y = (y_1 * tan((M_PI *angle_1) / 180) + y_2 * tan((M_PI *angle_2) / 180) + y_3 * tan((M_PI *angle_3) / 180)) / (tan((M_PI *angle_1) / 180) + tan((M_PI *angle_2) / 180) + tan((M_PI *angle_3) / 180));
+   239	
+   240	  ortho_y = fabs(ortho_y) == 0 ? 0 : ortho_y; 
+   241	
+   242	  //---Exit---
+   243	  return(ortho_y);
+   244	}
+   245	
+   246	/***************************************************************************
+   247	*
+   248	*  Function Information
+   249	*
+   250	*  Name of Function: CalcIntAngleA
+   251	*
+   252	*  Function Return Type: double
+   253	*
+   254	*  Parameters (list data type, name, and comment one per line):
+   255	*    1. double d_12 // Distance from point 1 to point 2
+   256	*    2. double d_23 // Distance from point 2 to point 3
+   257	*    3. double d_31 // Distance from point 3 to point 1
+   258	*    4. double d_1O // Distance from point 1 to orthocenter
+   259	*    5. double d_2O // Distance from point 2 to orthocenter
+   260	*    6. double d_3O // Distance from point 3 to orthocenter
+   261	*
+   262	*  Function Description: Calculates an angle A of the interior triangle
+   263	*
+   264	***************************************************************************/
+   265	double CalcIntAngleA(double d_12, double d_23, double d_31, double d_1O, double d_2O, double d_3O)
+   266	{
+   267	  //---Declarations---
+   268	  double angle_A = 0; // An angle of the internal triangle
+   269	
+   270	  //---Executables---
+   271	  if(d_12 >= d_23 && d_12 >= d_31)
+   272	  {
+   273	    angle_A = CalcAngle(d_12, d_1O, d_2O);
+   274	  }
+   275	  else if(d_23 >= d_12 && d_23 >= d_31)
+   276	  {
+   277	    angle_A = CalcAngle(d_23, d_2O, d_3O);
+   278	  }
+   279	  else if(d_31 >= d_12 && d_31 >= d_23)
+   280	  {
+   281	    angle_A = CalcAngle(d_31, d_1O, d_3O);
+   282	  }
+   283	
+   284	  //---Exit---
+   285	  return(angle_A);
+   286	}
+   287	
+   288	/***************************************************************************
+   289	*
+   290	*  Function Information
+   291	*
+   292	*  Name of Function: CalcIntAngleB
+   293	*
+   294	*  Function Return Type: double
+   295	*
+   296	*  Parameters (list data type, name, and comment one per line):
+   297	*    1. double d_12 // Distance from point 1 to point 2
+   298	*    2. double d_23 // Distance from point 2 to point 3
+   299	*    3. double d_31 // Distance from point 3 to point 1
+   300	*    4. double d_1O // Distance from point 1 to orthocenter
+   301	*    5. double d_2O // Distance from point 2 to orthocenter
+   302	*    6. double d_3O // Distance from point 3 to orthocenter
+   303	*
+   304	*  Function Description: Calculates an angle B of the interior triangle
+   305	*
+   306	***************************************************************************/
+   307	double CalcIntAngleB(double d_12, double d_23, double d_31, double d_1O, double d_2O, double d_3O)
+   308	{
+   309	  //---Declarations---
+   310	  double angle_B = 0; // An angle of the internal triangle
+   311	
+   312	  //---Executables---
+   313	  if(d_12 >= d_23 && d_12 >= d_31)
+   314	  {
+   315	    angle_B = CalcAngle(d_2O, d_12, d_1O);
+   316	  }
+   317	  else if(d_23 >= d_12 && d_23 >= d_31)
+   318	  {
+   319	    angle_B = CalcAngle(d_3O, d_23, d_2O);
+   320	  }
+   321	  else if(d_31 >= d_12 && d_31 >= d_23)
+   322	  {
+   323	    angle_B = CalcAngle(d_3O, d_31, d_1O);
+   324	  }
+   325	
+   326	  //---Exit---
+   327	  return(angle_B);
+   328	}
+   329	
+   330	/***************************************************************************
+   331	*
+   332	*  Function Information
+   333	*
+   334	*  Name of Function: CalcIntAngleC
+   335	*
+   336	*  Function Return Type: double
+   337	*
+   338	*  Parameters (list data type, name, and comment one per line):
+   339	*    1. double d_12 // Distance from point 1 to point 2
+   340	*    2. double d_23 // Distance from point 2 to point 3
+   341	*    3. double d_31 // Distance from point 3 to point 1
+   342	*    4. double d_1O // Distance from point 1 to orthocenter
+   343	*    5. double d_2O // Distance from point 2 to orthocenter
+   344	*    6. double d_3O // Distance from point 3 to orthocenter
+   345	*
+   346	*  Function Description: Calculates an angle C of the interior triangle
+   347	*
+   348	***************************************************************************/
+   349	double CalcIntAngleC(double d_12, double d_23, double d_31, double d_1O, double d_2O, double d_3O)
+   350	{
+   351	  //---Declarations---
+   352	  double angle_C = 0; // An angle of the internal triangle
+   353	
+   354	  //---Executables---
+   355	  if(d_12 >= d_23 && d_12 >= d_31)
+   356	  {
+   357	    angle_C = CalcAngle(d_1O, d_2O, d_12);
+   358	  }
+   359	  else if(d_23 >= d_12 && d_23 >= d_31)
+   360	  {
+   361	    angle_C = CalcAngle(d_2O, d_3O, d_23);
+   362	  }
+   363	  else if(d_31 >= d_12 && d_31 >= d_23)
+   364	  {
+   365	    angle_C = CalcAngle(d_1O, d_3O, d_31);
+   366	  }
+   367	
+   368	  //---Exit---
+   369	  return(angle_C);
+   370	}
+   371	
+   372	/***************************************************************************
+   373	*
+   374	*  Function Information
+   375	*
+   376	*  Name of Function: Output
+   377	*
+   378	*  Function Return Type: void
+   379	*
+   380	*  Parameters (list data type, name, and comment one per line):
+   381	*    1. double orthc_x // The x coord of orthocenter
+   382	*    2. double orthc_y // The y coord of orthocenter
+   383	*    3. double angle_A // An angle of the internal triangle
+   384	*    4. double angle_B // Another angle of the internal triangle
+   385	*    5. double angle_C // Final angle of the internal triangle
+   386	*
+   387	*  Function Description: Print the orthocenter, the sorted internal angles, and triangle type
+   388	*
+   389	***************************************************************************/
+   390	void Output(double orthc_x, double orthc_y, double angle_A, double angle_B, double angle_C)
+   391	{
+   392	  //---Declarations---
+   393	  double min = 0; // Minimum angle, used in sorting
+   394	  double med = 0; // Medium angle, used in sorting
+   395	  double max = 0; // Maximum angle, used in sorting
+   396	  double temp = 0; // Placeholder variable, used in sorting
+   397	
+   398	  //---Executables---
+   399	  // Output orthocenter coordinates
+   400	  printf("\nCordinates of orthocenter: %0.2lf, %0.2lf", orthc_x, orthc_y);
+   401	
+   402	  // Output angles in order
+   403	  min = angle_A;
+   404	  med = angle_B;
+   405	  max = angle_C;
+   406	  if(min > med)
+   407	  {
+   408	    temp = min;
+   409	    min = med;
+   410	    med = temp;
+   411	  }
+   412	  if(min > max)
+   413	  {
+   414	    temp = min;
+   415	    min = max;
+   416	    max = temp;
+   417	  }
+   418	  if(med > max)
+   419	  {
+   420	    temp = med;
+   421	    med = max;
+   422	    max = temp;
+   423	  }
+   424	  printf("\nInternal triangle angles: %0.1lf, %0.1lf, %0.1lf", min, med, max);
+   425	
+   426	  // Output triangle type
+   427	  printf("\nTriangle Type: ");
+   428	  if(fabs(angle_A - 60) < 0.001 && fabs(angle_B - 60) < 0.001 && fabs(angle_C - 60) < 0.001)
+   429	  {
+   430	    printf("Equilateral ");
+   431	  }
+   432	  else if(fabs(angle_A - angle_B) > 0.001 && fabs(angle_A - angle_C) > 0.001 && fabs(angle_B - angle_C) > 0.001)
+   433	  {
+   434	    printf("Scalene ");
+   435	  }
+   436	  else
+   437	  {
+   438	    printf("Isosceles ");
+   439	  }
+   440	
+   441	  if(fabs(angle_A - 90) < 0.001 || fabs(angle_B - 90) < 0.001 || fabs(angle_C - 90) < 0.001)
+   442	  {
+   443	    printf("right\n");
+   444	  }
+   445	  else if(angle_A < 90 && angle_B < 90 && angle_C < 90)
+   446	  {
+   447	    printf("acute\n");
+   448	  }
+   449	  else
+   450	  {
+   451	    printf("obtuse\n");
+   452	  }
+   453	}

@@ -1,0 +1,307 @@
+The following program submission has been recorded:
+
+Student: rmsundar
+Class: CS159
+Section: 15906
+Assignment: lab10.c
+Submission: 2021-04-21 20:27
+
+If the above is incorrect, you are responsible for resubmitting the assignment or seeking assistance from a course staff member prior to the due date! Assignments will never be accepted by e-mail.
+
+If this is for a lab assignment, only one member must be designated to make a submission for the group.  Graders will not evaluate submissions from multiple group members to determine which effort you actually want graded.
+
+*** Please do not reply to this email ***
+
+The contents of the submission:
+     1	/************************************************************************
+     2	*
+     3	*  Programmers and Purdue Email Addresses:
+     4	*  1. mcouso@purdue.edu
+     5	*  2. rmsundar@purdue.edu
+     6	*  3. jiang781@purdue.edu
+     7	*
+     8	*  Lab #: 10
+     9	*
+    10	*  Academic Integrity Statement:
+    11	*
+    12	*  We have not used source code obtained from any other unauthorized source,
+    13	*  either modified or unmodified.  Neither have we provided access to our code
+    14	*  to another. The effort we are submitting is our own original work.
+    15	*
+    16	*  Day, Time, Location of Lab: Asynchronous Online
+    17	*
+    18	*  Program Description: Given up to twenty non-negative decimal integer values as input; separate the data into even and odd numbers then sorting from smallest to largest within each classification.  Once the data is sorted as described take each value of the array modulus the data set size and use this number to represent an index and display the total of these elements. 
+    19	************************************************************************/
+    20	#include <stdio.h>
+    21	
+    22	void GetInput (int [], int*);
+    23	void ArraySplit (int [], int);
+    24	int GetEvenIndex(int [], int);
+    25	void ArraySort (int [], int, int);
+    26	void BubbleSort(int [], int, int, int, int);
+    27	int CalcSum(int[], int);
+    28	void Output(int[], int, int);
+    29	
+    30	#define INT_LIST_COUNT 20
+    31	
+    32	int main(void)
+    33	{
+    34	  //---Declarations---
+    35	  int decimals[INT_LIST_COUNT] = {0}; // List of numbers input by user
+    36	  int size = INT_LIST_COUNT - 1; // index of the last element of decimals[] that isnt -1
+    37	  int evenIndex = 0; // index of the last even element
+    38	  int sum = 0; // Calculated sum
+    39	  
+    40	  //---Executables---
+    41	  GetInput(decimals, &size);
+    42	  ArraySplit (decimals, size);
+    43	  evenIndex = GetEvenIndex(decimals, size);
+    44	  ArraySort (decimals, evenIndex, size);
+    45	  sum = CalcSum(decimals, size);
+    46	  Output(decimals, sum, size);
+    47	
+    48	  //---Exit---
+    49	  return(0);
+    50	}
+    51	/***************************************************************************
+    52	*
+    53	*  Function Information
+    54	*
+    55	*  Name of Function: GetInput
+    56	*
+    57	*  Function Return Type: void
+    58	*
+    59	*  Parameters (list data type, name, and comment one per line):
+    60	*    1. int decimals[]: array contains the input decimals
+    61	*    2. int *size: last index of the decimals array 
+    62	*
+    63	*  Function Description: Get inputs from users
+    64	*
+    65	***************************************************************************/
+    66	void GetInput (int decimals[], int *size)
+    67	{
+    68	  //---Declarations---
+    69	  int i = 0; //loop control condition
+    70	 
+    71	  //---Executables--
+    72	  printf("Enter up to 20 integer values -> ");
+    73	
+    74	  for (i = 0; i < INT_LIST_COUNT; i++)
+    75	  {
+    76	    scanf("%d", &decimals[i]);
+    77	      
+    78	    if (decimals[i] == -1) 
+    79	    {
+    80	      *size = i - 1;
+    81	      i = INT_LIST_COUNT;
+    82	    }
+    83	  }
+    84	}
+    85	
+    86	/***************************************************************************
+    87	*
+    88	*  Function Information
+    89	*
+    90	*  Name of Function: ArraySplit
+    91	*
+    92	*  Function Return Type: void
+    93	*
+    94	*  Parameters (list data type, name, and comment one per line):
+    95	*    1. int decimals[]: array contains the input decimals
+    96	*    2. int *size: last index of the decimals array 
+    97	*
+    98	*  Function Description: Spilt the array into even and odd
+    99	*
+   100	***************************************************************************/
+   101	void ArraySplit (int decimals[], int size)
+   102	{
+   103	  int numPasses; //LCV THAT CONTROLS # OF PASSES
+   104	  int i; //LOOP CONTROL VARIABLE FOR SORTING
+   105	  int temp; //HOLDS VALUE DURING SWAP
+   106	
+   107	  for(numPasses = 1; numPasses < size; numPasses++)
+   108	  {
+   109	    for(i = 0; i < size; i++)
+   110	    {
+   111	      if(decimals[i] % 2 == 1)
+   112	      {
+   113	        temp = decimals[i];
+   114	        decimals[i] = decimals[i + 1];
+   115	        decimals[i + 1] = temp;
+   116	      }
+   117	    }
+   118	  }
+   119	}
+   120	
+   121	/***************************************************************************
+   122	*
+   123	*  Function Information
+   124	*
+   125	*  Name of Function: GetEvenIndex
+   126	*
+   127	*  Function Return Type: int
+   128	*
+   129	*  Parameters (list data type, name, and comment one per line):
+   130	*    1. int decimals[]: array contains the input decimals
+   131	*    2. int size: last index of the decimals array 
+   132	*
+   133	*  Function Description: Return the last index containing even value
+   134	*
+   135	***************************************************************************/
+   136	int GetEvenIndex(int decimals[], int size)
+   137	{
+   138	  //---Declarations---
+   139	  int even_index = 0; // Stores the count of even numbers in value
+   140	  int i = 0; //loop control condition
+   141	
+   142	  //---Executables---
+   143	  for(i = 0; i < size + 1; i++)
+   144	  {
+   145	    decimals[i] % 2 == 1 ? i = size : even_index++;
+   146	  }
+   147	
+   148	  if (even_index != 0)
+   149	  {
+   150	    even_index -= 1;
+   151	  }
+   152	
+   153	  //---Exit---
+   154	  return(even_index);
+   155	}
+   156	
+   157	/***************************************************************************
+   158	*
+   159	*  Function Information
+   160	*
+   161	*  Name of Function: ArraySort
+   162	*
+   163	*  Function Return Type: void
+   164	*
+   165	*  Parameters (list data type, name, and comment one per line):
+   166	*    1. int decimals[]: array contains the input decimals
+   167	*    2. int size: last index of the decimals array 
+   168	*.   3. int midpoint: the last index containning even 
+   169	*
+   170	*  Function Description: Sort array from small to large, even to odd. 
+   171	*
+   172	***************************************************************************/
+   173	void ArraySort (int decimals[], int midpoint, int size)
+   174	{
+   175	  //---Executables---
+   176	  if (midpoint == size)
+   177	  {
+   178	    BubbleSort(decimals, 1, midpoint, 1, midpoint);
+   179	  }
+   180	
+   181	  if (midpoint == 0)
+   182	  {
+   183	    BubbleSort(decimals, midpoint + 1, size, midpoint + 1, size);
+   184	  }
+   185	 
+   186	  if (midpoint != 0 && midpoint != size)
+   187	  {
+   188	    BubbleSort(decimals, 1, midpoint, 1, midpoint);
+   189	    BubbleSort(decimals, midpoint + 2, size, midpoint + 2, size);
+   190	  }
+   191	}
+   192	
+   193	/***************************************************************************
+   194	*
+   195	*  Function Information
+   196	*
+   197	*  Name of Function: BubbleSort
+   198	*
+   199	*  Function Return Type: void
+   200	*
+   201	*  Parameters (list data type, name, and comment one per line):
+   202	*    1. int decimals[] The array input by the user
+   203	*    2. int numPass_init The initial numbers passed throught the function
+   204	*    3. int numPass_max The maximum numbers passed through the function
+   205	*    4. int  i_init The initial count for the loop
+   206	*    5. int i_max The max count for the loop
+   207	*
+   208	*  Function Description: Takes in the array input by the user, then uses the bubble sorting method to sort the array from least to greatest.
+   209	*
+   210	***************************************************************************/
+   211	void BubbleSort(int decimals [], int numPass_init, int numPass_max, int i_init, int i_max)
+   212	{
+   213	  int numPasses; //LCV THAT CONTROLS # OF PASSES
+   214	  int i; //LOOP CONTROL VARIABLE FOR SORTING
+   215	  int temp; //HOLDS VALUE DURING SWAP
+   216	
+   217	  for(numPasses = numPass_init; numPasses <= numPass_max; numPasses++)
+   218	  {
+   219	    for (i = i_init; i <= i_max; i++)
+   220	    {     
+   221	      if (decimals[i - 1] > decimals[i])
+   222	      {
+   223	        temp = decimals[i - 1];
+   224	        decimals[i - 1] = decimals[i];
+   225	        decimals[i] = temp;
+   226	      }
+   227	    }
+   228	  }
+   229	}
+   230	
+   231	/***************************************************************************
+   232	*
+   233	*  Function Information
+   234	*
+   235	*  Name of Function: CalcSum
+   236	*
+   237	*  Function Return Type: int
+   238	*
+   239	*  Parameters (list data type, name, and comment one per line):
+   240	*    1. int decimals[] The array input by the user.
+   241	*    2. int size The size of the array input by the user.
+   242	*
+   243	*  Function Description: Takes the array modulus the data set size and use that number to represent an index and then sum these.
+   244	*
+   245	***************************************************************************/
+   246	int CalcSum (int decimals[], int size)
+   247	{
+   248	  //---Declarations---
+   249	  int i; //Loop control variable
+   250	  int sum = 0; //The calculated sum
+   251	
+   252	  //---Executables---
+   253	  for(i = 0; i < (size + 1); i++)
+   254	  {
+   255	    sum += decimals[decimals[i] % (size + 1)];
+   256	  }
+   257	  
+   258	  //---Exit---
+   259	  return(sum);
+   260	}
+   261	
+   262	/***************************************************************************
+   263	*
+   264	*  Function Information
+   265	*
+   266	*  Name of Function: Output
+   267	*
+   268	*  Function Return Type: void
+   269	*
+   270	*  Parameters (list data type, name, and comment one per line):
+   271	*    1. int decimals[] The array input by the user.
+   272	*    2. int sum The calculated sum.
+   273	*    3. int size The size of the array input by the user.
+   274	*
+   275	*  Function Description: Displays the above parameters
+   276	*
+   277	***************************************************************************/
+   278	void Output(int decimals[], int sum, int size)
+   279	{
+   280	  //---Declarations---
+   281	  int a; //Loop control variable
+   282	
+   283	  //---Executables---
+   284	  printf("\nSorted array: ");
+   285	
+   286	  for (a = 0; a <= size; a++)
+   287	  {
+   288	    printf("%d ", decimals[a]);
+   289	  }
+   290	  
+   291	  printf("\nCalculated sum: %d\n", sum);
+   292	}
