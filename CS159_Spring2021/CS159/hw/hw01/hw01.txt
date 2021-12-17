@@ -1,0 +1,67 @@
+The following program submission has been recorded:
+
+Student: rmsundar
+Class: CS159
+Section: 15906
+Assignment: hw01.c
+Submission: 2021-01-30 13:47
+
+If the above is incorrect, you are responsible for resubmitting the assignment or seeking assistance from a course staff member prior to the due date! Assignments will never be accepted by e-mail.
+
+If this is for a lab assignment, only one member must be designated to make a submission for the group.  Graders will not evaluate submissions from multiple group members to determine which effort you actually want graded.
+
+*** Please do not reply to this email ***
+
+The contents of the submission:
+     1	
+     2	/***************************************************************************
+     3	*
+     4	*  Programmer and Purdue Email Address:
+     5	*  1. rmsundar@purdue.edu
+     6	*
+     7	*  Homework #:1
+     8	*
+     9	*  Academic Integrity Statement:
+    10	*
+    11	*  I have not used source code obtained from any other unauthorized source, 
+    12	*  either modified or unmodified.  Neither have I provided access to my code 
+    13	*  to another. The effort I am submitting is my own original work.
+    14	*
+    15	*  Day, Time, Location of Lab: Distance
+    16	*
+    17	*  Program Description: For a plane fying with a glider attached by cable - this program takes in the mass of an airplane, mass of a glider, and the force of an airplane; this is in order to calculate tension of the rope and acceleration of the glider
+    18	***************************************************************************/
+    19	#include <stdio.h>
+    20	
+    21	int main(void)
+    22	{
+    23	  //---Local Declarations---
+    24	  double m_p = 0; // mass of plane
+    25	  double f_p = 0; // force of the plane
+    26	
+    27	  double m_g = 0; // mass of glider
+    28	  double a_g = 0; // acceleration of glider
+    29	
+    30	  double f_t = 0; // force of tension on cable
+    31	  
+    32	  //---Executable statements---
+    33	  // Input
+    34	  printf("Enter mass of airplane (kg) -> ");
+    35	  scanf("%lf", &m_p);
+    36	
+    37	  printf("Enter mass of glider (kg) -> ");
+    38	  scanf("%lf", &m_g);
+    39	
+    40	  printf("Enter force produced by propellers (N) -> ");
+    41	  scanf("%lf", &f_p);
+    42	
+    43	  // Calculation
+    44	  a_g = f_p / (m_p + m_g);
+    45	  f_t = m_g * a_g;
+    46	
+    47	  // Output
+    48	  printf("\nResulting tension: %0.2lf Newtons", f_t);
+    49	  printf("\nAcceleration of glider: %0.2lf m/s^2\n", a_g);
+    50	
+    51	  return(0);
+    52	}

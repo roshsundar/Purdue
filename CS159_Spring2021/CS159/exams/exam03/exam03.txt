@@ -1,0 +1,260 @@
+The following program submission has been recorded:
+
+Student: rmsundar
+Class: CS159
+Section: 15906
+Assignment: exam03.c
+Submission: 2021-04-11 18:29
+
+If the above is incorrect, you are responsible for resubmitting the assignment or seeking assistance from a course staff member prior to the due date! Assignments will never be accepted by e-mail.
+
+If this is for a lab assignment, only one member must be designated to make a submission for the group.  Graders will not evaluate submissions from multiple group members to determine which effort you actually want graded.
+
+*** Please do not reply to this email ***
+
+The contents of the submission:
+     1	/************************************************************************
+     2	*
+     3	*  Programmers and Purdue Email Addresses:
+     4	*  1. rmsundar@purdue.edu
+     5	*
+     6	*  Lab #: exam 3
+     7	*
+     8	*  Academic Integrity Statement:
+     9	*
+    10	*  We have not used source code obtained from any otherunauthorized source,
+    11	*  either modified or unmodified.  Neither have we provided access to our code
+    12	*  to another. The effort we are submitting is our own original work.
+    13	*
+    14	*  Day, Time, Location of Lab: Asynchronous Online
+    15	*
+    16	*  Program Description: User inputs a numbering system for odd integers, a second numbering system for even integers, and a data set consisting of up to 20 non-negative integers. Program displays the conversion of all odd numbers to the specified
+    17	numbering system followed by the even numbers to the second specified numbering system.
+    18	*
+    19	************************************************************************/
+    20	#include <stdio.h>
+    21	#include <math.h>
+    22	
+    23	#define LIST_LENGTH 20
+    24	
+    25	void Input(int *, int *, int []);
+    26	int CalcBaseVal(int, int);
+    27	void Print_Basename(int);
+    28	void Output(int, int, int []);
+    29	
+    30	int main(void)
+    31	{
+    32	  //---Declarations---
+    33	  int odd_base = 0; // Base number system for odd values, 2-9
+    34	  int even_base = 0; // Base number system for even values, 2-9
+    35	  int integers[LIST_LENGTH] = {}; // List of integers > 0
+    36	
+    37	  //---Executables---
+    38	  Input(&odd_base, &even_base, integers);
+    39	  Output(odd_base, even_base, integers);
+    40	
+    41	  //---Exit---
+    42	  return(0);
+    43	}
+    44	
+    45	/***************************************************************************
+    46	*
+    47	*  Function Information
+    48	*
+    49	*  Name of Function:Input
+    50	*
+    51	*  Function Return Type: void
+    52	*
+    53	*  Parameters (list data type, name, and comment one per line):
+    54	*    1. int *odd_base // Pointer to odd_base variable in main()
+    55	*    2. int *even_base // Pointer to even_base variable in main()
+    56	*    3. int integers[] // Pointer to integers[] array in main()
+    57	*
+    58	*  Function Description: Collect input from user for odd_base, even_base, integers[] variables in main()
+    59	*
+    60	***************************************************************************/
+    61	void Input(int *odd_base, int *even_base, int integers[])
+    62	{
+    63	  //---Declarations---
+    64	  int i = 0; // counter
+    65	
+    66	  //---Executables---
+    67	  do
+    68	  {
+    69	    printf("Enter base for odd numbers -> ");
+    70	    scanf("%d", odd_base);
+    71	    if(*odd_base < 2 || *odd_base > 9)
+    72	    {
+    73	      printf("\nError! Base must be in the range from 2 to 9.\n\n");
+    74	    }
+    75	  } while (*odd_base < 2 || *odd_base > 9);
+    76	
+    77	  do
+    78	  {
+    79	    printf("Enter base for even numbers -> ");
+    80	    scanf("%d", even_base);
+    81	    if(*even_base < 2 || *even_base > 9)
+    82	    {
+    83	      printf("\nError! Base must be in the range from 2 to 9.\n\n");
+    84	    }
+    85	  } while (*even_base < 2 || *even_base > 9);
+    86	
+    87	  printf("Enter up to 20 integer values -> ");
+    88	  for(i = 0; i < LIST_LENGTH; i++)
+    89	  {
+    90	    scanf("%d", &integers[i]);
+    91	    if(integers[i] == -1)
+    92	    {
+    93	      i = LIST_LENGTH;
+    94	    }
+    95	  }
+    96	}
+    97	
+    98	/***************************************************************************
+    99	*
+   100	*  Function Information
+   101	*
+   102	*  Name of Function: CalcBaseVal
+   103	*
+   104	*  Function Return Type: int
+   105	*
+   106	*  Parameters (list data type, name, and comment one per line):
+   107	*    1. int integer // A given non-negative integer
+   108	*    2. int base // A base system from 2-9
+   109	*
+   110	*  Function Description: Convert a given integer to a value in the base system
+   111	*
+   112	***************************************************************************/
+   113	int CalcBaseVal(int integer, int base)
+   114	{
+   115	  //---Declarations---
+   116	  int base_value = 0; // value of the integer in the base system
+   117	  int quotient; //the remaining value of parameter divided by the base
+   118	  int count = 0; //counts the number of the iterations
+   119	  
+   120	  //---Executables--- 
+   121	  
+   122	  while (integer != 0)
+   123	  {
+   124	    quotient = integer % base;
+   125	    integer = integer / base;
+   126	    base_value += quotient * (pow(10, count));
+   127	    count++;
+   128	  }
+   129	
+   130	  //---Exit---
+   131	  return (base_value);
+   132	}
+   133	
+   134	/***************************************************************************
+   135	*
+   136	*  Function Information
+   137	*
+   138	*  Name of Function: Print_Basename
+   139	*
+   140	*  Function Return Type: void
+   141	*
+   142	*  Parameters (list data type, name, and comment one per line):
+   143	*    1. int base // The base of a numbering system, 2-9
+   144	*
+   145	*  Function Description: Print the name of the given base
+   146	*
+   147	***************************************************************************/
+   148	void Print_Basename(int base)
+   149	{
+   150	  //---Executables---
+   151	  switch(base)
+   152	  {
+   153	    case 2:
+   154	      printf("Binary");
+   155	      break;
+   156	    case 3:
+   157	      printf("Ternary");
+   158	      break;
+   159	    case 4:
+   160	      printf("Quaternary");
+   161	      break;
+   162	    case 5:
+   163	      printf("Quinary");
+   164	      break;
+   165	    case 6:
+   166	      printf("Senary");
+   167	      break;
+   168	    case 7:
+   169	      printf("Septenary");
+   170	      break;
+   171	    case 8:
+   172	      printf("Octal");
+   173	      break;
+   174	    case 9:
+   175	      printf("Nonary");
+   176	      break;
+   177	  }
+   178	}
+   179	
+   180	/***************************************************************************
+   181	*
+   182	*  Function Information
+   183	*
+   184	*  Name of Function: Output
+   185	*
+   186	*  Function Return Type: void
+   187	*
+   188	*  Parameters (list data type, name, and comment one per line):
+   189	*    1. int *odd_base // Base number system for odd values, 2-9
+   190	*    2. int *even_base // Base number system for even values, 2-9
+   191	*    3. int integers[] // List of integers > 0
+   192	*
+   193	*  Function Description: Output the base name and converted integers, for the odd base and even base
+   194	*
+   195	***************************************************************************/
+   196	void Output(int odd_base, int even_base, int integers[])
+   197	{
+   198	  //---Declarations---
+   199	  int i; //loop control statement 
+   200	  int count = 0; //counts the number of odd/even values 
+   201	
+   202	  //---Executables---
+   203	  printf("\n");
+   204	  Print_Basename(odd_base);
+   205	  printf(" values: ");
+   206	  for (i = 0; i < LIST_LENGTH; i++)
+   207	  {
+   208	    if(integers[i] == -1)
+   209	    {
+   210	      i = LIST_LENGTH;
+   211	    }
+   212	    else if (integers[i] % 2 == 1)
+   213	    {
+   214	      printf("%d ", CalcBaseVal(integers[i], odd_base));
+   215	      count += 1;
+   216	    }
+   217	  }
+   218	  if (count == 0)
+   219	  {
+   220	    printf("None");
+   221	  }
+   222	  
+   223	  printf("\n");
+   224	  Print_Basename(even_base);
+   225	  printf(" values: ");
+   226	  count = 0;
+   227	  for (i = 0; i < LIST_LENGTH; i++)
+   228	  {
+   229	    if(integers[i] == -1)
+   230	    {
+   231	      i = LIST_LENGTH;
+   232	    }
+   233	    else if (integers[i] % 2 == 0)
+   234	    {
+   235	      printf("%d ", CalcBaseVal(integers[i], even_base));
+   236	      count++;
+   237	    }
+   238	  }
+   239	  if (count == 0)
+   240	  {
+   241	    printf("None");
+   242	  }
+   243	
+   244	  printf("\n");
+   245	}

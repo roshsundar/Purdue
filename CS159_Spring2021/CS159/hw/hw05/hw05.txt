@@ -1,0 +1,738 @@
+The following program submission has been recorded:
+
+Student: rmsundar
+Class: CS159
+Section: 15906
+Assignment: hw05.c
+Submission: 2021-03-28 13:37
+
+If the above is incorrect, you are responsible for resubmitting the assignment or seeking assistance from a course staff member prior to the due date! Assignments will never be accepted by e-mail.
+
+If this is for a lab assignment, only one member must be designated to make a submission for the group.  Graders will not evaluate submissions from multiple group members to determine which effort you actually want graded.
+
+*** Please do not reply to this email ***
+
+The contents of the submission:
+     1	/***************************************************************************
+     2	*
+     3	*  Programmer and Purdue Email Address:
+     4	*  1. rmsundar@purdue.edu
+     5	*
+     6	*  Homework #: 5
+     7	*
+     8	*  Academic Integrity Statement:
+     9	*
+    10	*  I have not used source code obtained from any other unauthorized source,
+    11	*  either modified or unmodified.  Neither have I provided access to my code
+    12	*  to another. The effort I am submitting is my own original work.
+    13	*
+    14	*  Day, Time, Location of Lab: DIST
+    15	*
+    16	*  Program Description: User inputs the year and occurrence number. Program determines when that week begins & ends, and displays the week which will begin on the same day of the week as January 1st of the specified year.
+    17	*
+    18	***************************************************************************/
+    19	
+    20	#include <stdio.h>
+    21	
+    22	void Input(int*, int*);
+    23	int Calc_first_day_code(int);
+    24	int Calc_last_day_code(int);
+    25	int Calc_total_days(int, int);
+    26	void Calc_month_date(int*, int, int*, int*);
+    27	int Get_Month_Len(int);
+    28	int Get_Month_Days(int, int);
+    29	void Output_Day(int);
+    30	void Output_Month(int);
+    31	void Calendar(int, int, int, int, int, int);
+    32	void Output(int, int, int, int, int, int, int, int);
+    33	
+    34	int main(void)
+    35	{
+    36	  //---Declarations---
+    37	  int start_year = 0; // Year between 1800-2100, input by user
+    38	  int end_year = 0; // Year the week ends in
+    39	  int occurance = 0; // The week number, does not go over a year
+    40	
+    41	  int first_day_code = 0; // first day of week, code 0-6 representing sun-sat
+    42	  int first_day_days = 0; // Number of days to the first day of the week
+    43	  int first_day_month = 0; // Month the first day starts in, code 1-12 for jan-dec
+    44	  int first_day_date = 0; // The date in the month the first day starts in
+    45	
+    46	  int last_day_code = 0; // Last day of week, code 0-6 representing sun-sat
+    47	  int last_day_days = 0; // Number of days to the last day of the week
+    48	  int last_day_month = 0; // Month the last day starts in, code 1-12 for jan-dec
+    49	  int last_day_date = 0; // The date in the month the last day starts in
+    50	
+    51	  //---Executables---
+    52	  Input(&start_year, &occurance);
+    53	  end_year = start_year;
+    54	
+    55	  first_day_code = Calc_first_day_code(start_year);
+    56	  last_day_code = Calc_last_day_code(first_day_code);
+    57	
+    58	  first_day_days = Calc_total_days(1, occurance);
+    59	  last_day_days = Calc_total_days(7, occurance);
+    60	
+    61	  Calc_month_date(&end_year, first_day_days, &first_day_month, &first_day_date);
+    62	  Calc_month_date(&end_year, last_day_days, &last_day_month, &last_day_date);
+    63	
+    64	  Output(first_day_code, last_day_code, first_day_date, last_day_date, first_day_month, last_day_month, start_year, end_year);
+    65	
+    66	  //---Exit---
+    67	  return(0);
+    68	}
+    69	
+    70	/***************************************************************************
+    71	*
+    72	*  Function Information
+    73	*
+    74	*  Name of Function: Input
+    75	*
+    76	*  Function Return Type: void
+    77	*
+    78	*  Parameters (list data type, name, and comment one per line):
+    79	*    1. int *year // Is a pointer to year variable in main()
+    80	*    3. int *occurance // Is a pointer to occurance variable in main()
+    81	*
+    82	*  Function Description: Gathers user input for year, occurance in main()
+    83	*
+    84	***************************************************************************/
+    85	void Input(int *year, int *occurance)
+    86	{
+    87	  //---Executables---
+    88	  printf("Enter year number -> ");
+    89	  scanf("%d", year);
+    90	
+    91	  printf("Enter occurrence number -> ");
+    92	  scanf("%d", occurance);
+    93	}
+    94	
+    95	/***************************************************************************
+    96	*
+    97	*  Function Information
+    98	*
+    99	*  Name of Function: Calc_first_day_code
+   100	*
+   101	*  Function Return Type: int
+   102	*
+   103	*  Parameters (list data type, name, and comment one per line):
+   104	*    1. int year // Year input by user
+   105	*
+   106	*  Function Description: Calculate the code 0-6 for the first day of the week
+   107	*
+   108	***************************************************************************/
+   109	int Calc_first_day_code(int year)
+   110	{
+   111	  //---Declarations---
+   112	  int first_day_code = 0; // The code for the first day
+   113	
+   114	  //---Executables---
+   115	  first_day_code = ((year - 1) * 365) + ((year - 1) / 4) - ((year - 1) / 100) + ((year - 1) / 400); // From pg 300 of textbook
+   116	  first_day_code = first_day_code % 7 + 1;
+   117	
+   118	  if(first_day_code == 7)
+   119	  {
+   120	    first_day_code = 0;
+   121	  }
+   122	  
+   123	  //---Exit---
+   124	  return(first_day_code);
+   125	}
+   126	
+   127	/***************************************************************************
+   128	*
+   129	*  Function Information
+   130	*
+   131	*  Name of Function: Calc_last_day_code
+   132	*
+   133	*  Function Return Type: int
+   134	*
+   135	*  Parameters (list data type, name, and comment one per line):
+   136	*    1. int first_day_code // first day of week, code 0-6 representing sun-sat
+   137	*
+   138	*  Function Description: Calculate the code 0-6 for the last day of the week
+   139	*
+   140	***************************************************************************/
+   141	int Calc_last_day_code(int first_day_code)
+   142	{
+   143	  //---Declarations---
+   144	  int last_day_code = 0; // Last day of week, code 0-6 representing sun-sat
+   145	
+   146	  //---Executables---
+   147	  last_day_code = first_day_code - 1;
+   148	  
+   149	  if(last_day_code < 0)
+   150	  {
+   151	    last_day_code = 0;
+   152	  }
+   153	
+   154	  if(first_day_code == 0)
+   155	  {
+   156	    last_day_code = 6;
+   157	  }
+   158	
+   159	  //---Exit---
+   160	  return(last_day_code);
+   161	}
+   162	
+   163	/***************************************************************************
+   164	*
+   165	*  Function Information
+   166	*
+   167	*  Name of Function: Calc_total_days
+   168	*
+   169	*  Function Return Type: int
+   170	*
+   171	*  Parameters (list data type, name, and comment one per line):
+   172	*    1. int first_occ_date // The date of the first occurance of the day
+   173	*    2. int occurance // The amount of times the day occurs
+   174	*
+   175	*  Function Description: Calcuate total amount of days spanned by the occurance
+   176	*
+   177	***************************************************************************/
+   178	int Calc_total_days(int first_occ_date, int occurance)
+   179	{
+   180	  //---Declarations---
+   181	  int total_days = 0; // Total amount of days spanned by the occurance
+   182	
+   183	  //---Executables---
+   184	  total_days = first_occ_date + ((occurance - 1) * 7);
+   185	
+   186	  //---Exit---
+   187	  return(total_days);
+   188	}
+   189	
+   190	/***************************************************************************
+   191	*
+   192	*  Function Information
+   193	*
+   194	*  Name of Function: Calc_month_date
+   195	*
+   196	*  Function Return Type: void
+   197	*
+   198	*  Parameters (list data type, name, and comment one per line):
+   199	*    1. int *end_year // Pointer to end_year in main()
+   200	*    2. int total_days // Total amount of days to a date
+   201	*    3. int *month_code // Pointer to a month_code variable in main(), for the first day or last day
+   202	*    4. int *date // Pointer to a date variable in main(), for the first day or last day
+   203	*
+   204	*  Function Description: For a number of days, return the year, the month, and the date it exists in
+   205	*
+   206	***************************************************************************/
+   207	void Calc_month_date(int *end_year, int total_days, int *month_code, int *date)
+   208	{
+   209	  //---Declarations---
+   210	  int flag = 1; // Used to prevent further unnecessary printing once date is reached
+   211	
+   212	  //---Executables---
+   213	  if(total_days <= Get_Month_Days(1, *end_year) && flag == 1)
+   214	  {
+   215	    // January
+   216	    *month_code = 1;
+   217	    *date = total_days;
+   218	    flag = 0;
+   219	  }
+   220	
+   221	  total_days -= Get_Month_Days(1, *end_year);
+   222	  if(total_days <= Get_Month_Days(2, *end_year) && flag == 1)
+   223	  {
+   224	    // February
+   225	    *month_code = 2;
+   226	    *date = total_days;
+   227	    flag = 0;
+   228	  }
+   229	
+   230	  total_days -= Get_Month_Days(2, *end_year);
+   231	  if(total_days <= Get_Month_Days(3, *end_year) && flag == 1)
+   232	  {
+   233	    // March
+   234	    *month_code = 3;
+   235	    *date = total_days;
+   236	    flag = 0;
+   237	  }
+   238	
+   239	  total_days -= Get_Month_Days(3, *end_year);
+   240	  if(total_days <= Get_Month_Days(4, *end_year) && flag == 1)
+   241	  {
+   242	    // April
+   243	    *month_code = 4;
+   244	    *date = total_days;
+   245	    flag = 0;
+   246	  }
+   247	
+   248	  total_days -= Get_Month_Days(4, *end_year);
+   249	  if(total_days <= Get_Month_Days(5, *end_year) && flag == 1)
+   250	  {
+   251	    // May
+   252	    *month_code = 5;
+   253	    *date = total_days;
+   254	    flag = 0;
+   255	  }
+   256	
+   257	  total_days -= Get_Month_Days(5, *end_year);
+   258	  if(total_days <= Get_Month_Days(6, *end_year) && flag == 1)
+   259	  {
+   260	    // June
+   261	    *month_code = 6;
+   262	    *date = total_days;
+   263	    flag = 0;
+   264	  }
+   265	  
+   266	  total_days -= Get_Month_Days(6, *end_year);
+   267	  if(total_days <= Get_Month_Days(7, *end_year) && flag == 1)
+   268	  {
+   269	    // July
+   270	    *month_code = 7;
+   271	    *date = total_days;
+   272	    flag = 0;
+   273	  }
+   274	
+   275	  total_days -= Get_Month_Days(7, *end_year);
+   276	  if(total_days <= Get_Month_Days(8, *end_year) && flag == 1)
+   277	  {
+   278	    // August
+   279	    *month_code = 8;
+   280	    *date = total_days;
+   281	    flag = 0;
+   282	  }
+   283	
+   284	  total_days -= Get_Month_Days(8, *end_year);
+   285	  if(total_days <= Get_Month_Days(9, *end_year) && flag == 1)
+   286	  {
+   287	    // September
+   288	    *month_code = 9;
+   289	    *date = total_days;
+   290	    flag = 0;
+   291	  }
+   292	
+   293	  total_days -= Get_Month_Days(9, *end_year);
+   294	  if(total_days <= Get_Month_Days(10, *end_year) && flag == 1)
+   295	  {
+   296	    // October
+   297	    *month_code = 10;
+   298	    *date = total_days;
+   299	    flag = 0;
+   300	  }
+   301	
+   302	  total_days -= Get_Month_Days(10, *end_year);
+   303	  if(total_days <= Get_Month_Days(11, *end_year) && flag == 1)
+   304	  {
+   305	    // November
+   306	    *month_code = 11;
+   307	    *date = total_days;
+   308	    flag = 0;
+   309	  }
+   310	
+   311	  total_days -= Get_Month_Days(11, *end_year);
+   312	  if(total_days <= Get_Month_Days(12, *end_year) && flag == 1)
+   313	  {
+   314	    // December
+   315	    *month_code = 12;
+   316	    *date = total_days;
+   317	    flag = 0;
+   318	  }
+   319	  else if (flag == 1)
+   320	  {
+   321	    // Jan of next year
+   322	    total_days -= 31;
+   323	    *end_year += 1;
+   324	    *month_code = 1;
+   325	    *date = total_days;
+   326	  }
+   327	}
+   328	
+   329	/***************************************************************************
+   330	*
+   331	*  Function Information
+   332	*
+   333	*  Name of Function: Get_Month_Len
+   334	*
+   335	*  Function Return Type: int
+   336	*
+   337	*  Parameters (list data type, name, and comment one per line):
+   338	*    1. int month_code // Code 1-12 for a given month
+   339	*
+   340	*  Function Description: Return the length of the text for a given month
+   341	*
+   342	***************************************************************************/
+   343	int Get_Month_Len(int month_code)
+   344	{
+   345	  //---Declarations---
+   346	  int len = 0; // Length of the text for a given month
+   347	
+   348	  //---Executables---
+   349	  switch(month_code)
+   350	  {
+   351	    case 1: 
+   352	      // January
+   353	      len = 7;
+   354	      break;
+   355	    case 2: 
+   356	      // February
+   357	      len = 8;
+   358	      break;
+   359	    case 3: 
+   360	      // March
+   361	      len = 5;
+   362	      break;
+   363	    case 4: 
+   364	      // April
+   365	      len = 5;
+   366	      break;
+   367	    case 5: 
+   368	      // May
+   369	      len = 3;
+   370	      break;
+   371	    case 6: 
+   372	      // June
+   373	      len = 4;
+   374	      break;
+   375	    case 7: 
+   376	      // July
+   377	      len = 4;
+   378	      break;
+   379	    case 8: 
+   380	      // August
+   381	      len = 6;
+   382	      break;
+   383	    case 9: 
+   384	      // September
+   385	      len = 9;
+   386	      break;
+   387	    case 10: 
+   388	      // October
+   389	      len = 7;
+   390	      break;
+   391	    case 11: 
+   392	      // November
+   393	      len = 8;
+   394	      break;
+   395	    case 12: 
+   396	      // December
+   397	      len = 8;
+   398	      break;
+   399	  }
+   400	
+   401	  //---Exit---
+   402	  return(len);
+   403	}
+   404	
+   405	/***************************************************************************
+   406	*
+   407	*  Function Information
+   408	*
+   409	*  Name of Function: Get_Month_Days
+   410	*
+   411	*  Function Return Type: int
+   412	*
+   413	*  Parameters (list data type, name, and comment one per line):
+   414	*    1. int month_code // Code 1-12 for a given month
+   415	*    2. int year // Year between 1800-2100
+   416	*
+   417	*  Function Description: Return the number of days for a given month in a given year
+   418	*
+   419	***************************************************************************/
+   420	int Get_Month_Days(int month_code, int year)
+   421	{
+   422	  //---Declarations---
+   423	  int days = 0; // Number of days in a given month
+   424	
+   425	  //---Executables---
+   426	  switch(month_code)
+   427	  {
+   428	    case 1: 
+   429	      // January
+   430	      days = 31;
+   431	      break;
+   432	    case 2: 
+   433	      // February
+   434	      if((!(year % 4) && (year % 100)) || !(year % 400))
+   435	      {
+   436	        days = 29;
+   437	      }
+   438	      else
+   439	      {
+   440	        days = 28;
+   441	      }
+   442	      break;
+   443	    case 3: 
+   444	      // March
+   445	      days = 31;
+   446	      break;
+   447	    case 4: 
+   448	      // April
+   449	      days = 30;
+   450	      break;
+   451	    case 5: 
+   452	      // May
+   453	      days = 31;
+   454	      break;
+   455	    case 6: 
+   456	      // June
+   457	      days = 30;
+   458	      break;
+   459	    case 7: 
+   460	      // July
+   461	      days = 31;
+   462	      break;
+   463	    case 8: 
+   464	      // August
+   465	      days = 31;
+   466	      break;
+   467	    case 9: 
+   468	      // September
+   469	      days = 30;
+   470	      break;
+   471	    case 10: 
+   472	      // October
+   473	      days = 31;
+   474	      break;
+   475	    case 11: 
+   476	      // November
+   477	      days = 30;
+   478	      break;
+   479	    case 12: 
+   480	      // December
+   481	      days = 31;
+   482	      break;
+   483	  }
+   484	
+   485	  //---Exit---
+   486	  return(days);
+   487	}
+   488	
+   489	/***************************************************************************
+   490	*
+   491	*  Function Information
+   492	*
+   493	*  Name of Function: Output_Day
+   494	*
+   495	*  Function Return Type: void
+   496	*
+   497	*  Parameters (list data type, name, and comment one per line):
+   498	*    1. int day_code // Code 0-6 for sun-sat
+   499	*
+   500	*  Function Description: Print sun-sat given a day code
+   501	*
+   502	***************************************************************************/
+   503	void Output_Day(int day_code)
+   504	{
+   505	  //---Executables---
+   506	  switch(day_code)
+   507	  {
+   508	    case 0: 
+   509	      printf("Sunday");
+   510	      break;
+   511	    case 1: 
+   512	      printf("Monday");
+   513	      break;
+   514	    case 2: 
+   515	      printf("Tuesday");
+   516	      break;
+   517	    case 3: 
+   518	      printf("Wednesday");
+   519	      break;
+   520	    case 4: 
+   521	      printf("Thursday");
+   522	      break;
+   523	    case 5: 
+   524	      printf("Friday");
+   525	      break;
+   526	    case 6: 
+   527	      printf("Saturday");
+   528	      break;
+   529	  }
+   530	}
+   531	
+   532	/***************************************************************************
+   533	*
+   534	*  Function Information
+   535	*
+   536	*  Name of Function: Output_Month
+   537	*
+   538	*  Function Return Type: void
+   539	*
+   540	*  Parameters (list data type, name, and comment one per line):
+   541	*    1. int month_code // Code 1-12 for a given month
+   542	*
+   543	*  Function Description: Print the month for a given month code
+   544	*
+   545	***************************************************************************/
+   546	void Output_Month(int month_code)
+   547	{
+   548	  //---Executables---
+   549	  switch(month_code)
+   550	  {
+   551	    case 1: 
+   552	      printf("January");
+   553	      break;
+   554	    case 2: 
+   555	      printf("February");
+   556	      break;
+   557	    case 3: 
+   558	      printf("March");
+   559	      break;
+   560	    case 4: 
+   561	      printf("April");
+   562	      break;
+   563	    case 5: 
+   564	      printf("May");
+   565	      break;
+   566	    case 6: 
+   567	      printf("June");
+   568	      break;
+   569	    case 7: 
+   570	      printf("July");
+   571	      break;
+   572	    case 8: 
+   573	      printf("August");
+   574	      break;
+   575	    case 9: 
+   576	      printf("September");
+   577	      break;
+   578	    case 10: 
+   579	      printf("October");
+   580	      break;
+   581	    case 11: 
+   582	      printf("November");
+   583	      break;
+   584	    case 12: 
+   585	      printf("December");
+   586	      break;
+   587	  }
+   588	}
+   589	
+   590	/***************************************************************************
+   591	*
+   592	*  Function Information
+   593	*
+   594	*  Name of Function: Output_Week
+   595	*
+   596	*  Function Return Type: void
+   597	*
+   598	*  Parameters (list data type, name, and comment one per line):
+   599	*    1. int day_code // Code 0-6 for sun-sat
+   600	*    2. int month_code // Code 1-12 for a given month
+   601	*    3. int date // Given date in a month
+   602	*    4. int year // Year between 1800-2100
+   603	*
+   604	*  Function Description: Print the month for a given month code
+   605	*
+   606	***************************************************************************/
+   607	void Output_Week(int day_code, int month_code, int date, int year)
+   608	{
+   609	  //---Executables---
+   610	  Output_Day(day_code);
+   611	  printf(" ");
+   612	  Output_Month(month_code);
+   613	  printf(" %d, %d", date, year);
+   614	}
+   615	
+   616	/***************************************************************************
+   617	*
+   618	*  Function Information
+   619	*
+   620	*  Name of Function: Calendar
+   621	*
+   622	*  Function Return Type: void
+   623	*
+   624	*  Parameters (list data type, name, and comment one per line):
+   625	*    1. int first_day_code // first day of week, code 0-6 representing sun-sat
+   626	*    2. int last_day_code // Last day of week, code 0-6 representing sun-sat
+   627	*    3. int first_day_date // The date in the month the first day starts in
+   628	*    4. int last_day_date // The date in the month the last day starts in
+   629	*    5. int first_day_month // Month the first day starts in, code 1-12 for jan-dec
+   630	*    6. int start_year // Year between 1800-2100, input by user
+   631	*
+   632	*  Function Description: Create a calender for the full week - displaying month, first & last date
+   633	*
+   634	***************************************************************************/
+   635	void Calendar(int first_day_code, int last_day_code, int first_day_date, int last_day_date, int first_day_month, int start_year)
+   636	{
+   637	  //---Declarations---
+   638	  int prepad = 0; // Number of spaces before the month, to center it
+   639	  int pos = 0; // Current index in the caledar
+   640	  int max_pos = 0; // Maximum indexin the caledar
+   641	  int count = 0; // Current day of the month
+   642	
+   643	  //---Executables---
+   644	  prepad = 14 - (1 + Get_Month_Len(first_day_month) / 2);
+   645	  printf("%*c", prepad, 32);
+   646	  Output_Month(first_day_month);
+   647	  printf("\n-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+   648	  printf("\nSun Mon Tue Wed Thu Fri Sat\n");
+   649	
+   650	  count = first_day_date;
+   651	  
+   652	  if(first_day_code == 0)
+   653	  {
+   654	    max_pos = last_day_code;
+   655	  }
+   656	  else
+   657	  {
+   658	    max_pos = last_day_code+7;
+   659	  }
+   660	
+   661	  for(pos = 0; pos <= max_pos; pos++)
+   662	  {
+   663	    if(pos >= first_day_code)
+   664	    {
+   665	      if(count > Get_Month_Days(first_day_month, start_year))
+   666	      {
+   667	        count = 1;
+   668	      }
+   669	      printf(" %-2d", count);
+   670	      count++;
+   671	    }
+   672	    else
+   673	    {
+   674	      printf("   ");
+   675	    }
+   676	
+   677	    if(pos == 6 && pos != max_pos)
+   678	    {
+   679	      printf("\n");
+   680	    }
+   681	    else
+   682	    {
+   683	      printf(" ");
+   684	    }
+   685	  }
+   686	  printf("\n");
+   687	}
+   688	
+   689	/***************************************************************************
+   690	*
+   691	*  Function Information
+   692	*
+   693	*  Name of Function: Output
+   694	*
+   695	*  Function Return Type: void
+   696	*
+   697	*  Parameters (list data type, name, and comment one per line):
+   698	*    1. int first_day_code // first day of week, code 0-6 representing sun-sat
+   699	*    2. int last_day_code // Last day of week, code 0-6 representing sun-sat
+   700	*    3. int first_day_date // The date in the month the first day starts in
+   701	*    4. int last_day_date // The date in the month the last day starts in
+   702	*    5. int first_day_month // Month the first day starts in, code 1-12 for jan-dec
+   703	*    6. int last_day_month // Month the last day starts in, code 1-12 for jan-dec
+   704	*    7. int start_year // Year between 1800-2100, input by user
+   705	*    8. int end_year = 0; // Year the week ends in
+   706	*
+   707	*  Function Description: Output the start and end week info, as well as calendar
+   708	*
+   709	***************************************************************************/
+   710	void Output(int first_day_code, int last_day_code, int first_day_date, int last_day_date, int first_day_month, int last_day_month, int start_year, int end_year)
+   711	{
+   712	  //---Executables---
+   713	  printf("\n");
+   714	  printf("Start of week: ");
+   715	  Output_Week(first_day_code, first_day_month, first_day_date, start_year);
+   716	
+   717	  printf("\n");
+   718	  printf("End of week: ");
+   719	  Output_Week(last_day_code, last_day_month, last_day_date, end_year);
+   720	
+   721	  printf("\n\n");
+   722	  Calendar(first_day_code, last_day_code, first_day_date, last_day_date, first_day_month, start_year);
+   723	}

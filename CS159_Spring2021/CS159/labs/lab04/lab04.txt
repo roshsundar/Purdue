@@ -1,0 +1,240 @@
+The following program submission has been recorded:
+
+Student: rmsundar
+Class: CS159
+Section: 15906
+Assignment: lab04.c
+Submission: 2021-02-24 18:43
+
+If the above is incorrect, you are responsible for resubmitting the assignment or seeking assistance from a course staff member prior to the due date! Assignments will never be accepted by e-mail.
+
+If this is for a lab assignment, only one member must be designated to make a submission for the group.  Graders will not evaluate submissions from multiple group members to determine which effort you actually want graded.
+
+*** Please do not reply to this email ***
+
+The contents of the submission:
+     1	
+     2	/***************************************************************************
+     3	*
+     4	*  Programmers and Purdue Email Addresses:
+     5	*  1. rmsundar@purdue.edu
+     6	*  2. jiang781@purdue.edu
+     7	*  3. mcouso@purdue.edu
+     8	*
+     9	*  Lab #: 4
+    10	*
+    11	*  Academic Integrity Statement:
+    12	*
+    13	*  We have not used source code obtained from any other unauthorized source,
+    14	*  either modified or unmodified.  Neither have we provided access to our code
+    15	*  to another. The effort we are submitting is our own original work.
+    16	*
+    17	*  Day, Time, Location of Lab: DIST
+    18	*
+    19	*  Program Description: User inputs three points that will always create a triangle with a positive area.
+    20	*  Program calculates the distance between the points and the coordinate of the incenter found within the triangle created.
+    21	*
+    22	***************************************************************************/
+    23	#include <stdio.h>
+    24	#include <math.h>
+    25	
+    26	void Input(int*, int*, int*, int*, int*, int*);
+    27	double CalcDist(int, int, int, int);
+    28	double CalcInCen_X(double, double, double, int, int, int);
+    29	double CalcInCen_Y(double, double, double, int, int, int);
+    30	void Output(double, double, double, double, double);
+    31	
+    32	int main(void)
+    33	{
+    34	  //---Declarations---
+    35	  int x_1 = 0; // x coord of point 1
+    36	  int y_1 = 0; // y coord of point 1
+    37	  int x_2 = 0; // x coord of point 2
+    38	  int y_2 = 0; // y coord of point 2
+    39	  int x_3 = 0; // x coord of point 3
+    40	  int y_3 = 0; // y coord of point 3
+    41	  
+    42	  double d_12 = 0; // Distance from point 1 to point 2
+    43	  double d_23 = 0; // Distance from point 2 to point 3
+    44	  double d_31 = 0; // Distance from point 3 to point 1
+    45	  
+    46	  double incen_x = 0; // Incenter x coord
+    47	  double incen_y = 0; // Incenter y coord
+    48	
+    49	  //---Executables---
+    50	  Input(&x_1, &y_1, &x_2, &y_2, &x_3, &y_3);
+    51	  
+    52	  d_12 = CalcDist(x_1, y_1, x_2, y_2);
+    53	  d_23 = CalcDist(x_2, y_2, x_3, y_3);
+    54	  d_31 = CalcDist(x_3, y_3, x_1, y_1);
+    55	
+    56	  incen_x = CalcInCen_X(d_12, d_23, d_31, x_1, x_2, x_3);
+    57	  incen_y = CalcInCen_Y(d_12, d_23, d_31, y_1, y_2, y_3);
+    58	
+    59	  Output(d_12, d_23, d_31, incen_x, incen_y);
+    60	
+    61	  //--Exit---
+    62	  return(0);
+    63	}
+    64	
+    65	/***************************************************************************
+    66	*
+    67	*  Function Information
+    68	*
+    69	*  Name of Function: Input
+    70	*
+    71	*  Function Return Type: void
+    72	*
+    73	*  Parameters (list data type, name, and comment one per line):
+    74	*    1. int *x_1 memory address of x_1 in main()
+    75	*    2. int *y_1 memory address of y_1 in main()
+    76	*    3. int *x_2 memory address of x_2 in main()
+    77	*    4. int *y_2 memory address of y_2 in main()
+    78	*    5. int *x_3 memory address of x_3 in main()
+    79	*    6. int *y_3 memory address of y_3 in main()
+    80	*
+    81	*  Function Description: Gets user input and fills above variables
+    82	*
+    83	***************************************************************************/
+    84	void Input(int *x_1, int *y_1, int *x_2, int *y_2, int *x_3, int *y_3)
+    85	{
+    86	  //---Executables---
+    87	  printf("Enter X coordinate #1 -> ");
+    88	  scanf("%d", x_1);
+    89	  
+    90	  printf("Enter Y coordinate #1 -> ");
+    91	  scanf("%d", y_1);
+    92	
+    93	  printf("Enter X coordinate #2 -> ");
+    94	  scanf("%d", x_2);
+    95	
+    96	  printf("Enter Y coordinate #2 -> ");
+    97	  scanf("%d", y_2);
+    98	  
+    99	  printf("Enter X coordinate #3 -> ");
+   100	  scanf("%d", x_3);
+   101	
+   102	  printf("Enter Y coordinate #3 -> ");
+   103	  scanf("%d", y_3);
+   104	}
+   105	
+   106	/***************************************************************************
+   107	*
+   108	*  Function Information
+   109	*
+   110	*  Name of Function: CalcDist
+   111	*
+   112	*  Function Return Type: double
+   113	*
+   114	*  Parameters (list data type, name, and comment one per line):
+   115	*    1. int x_i x coord of starting point
+   116	*    2. int y_i y coord of starting point
+   117	*    3. int x_f x coord of ending point
+   118	*    4. int y_f y coord of ending point
+   119	*
+   120	*  Function Description: Calculates distance between 2 points
+   121	*
+   122	***************************************************************************/
+   123	double CalcDist(int x_i, int y_i, int x_f, int y_f)
+   124	{
+   125	  //---Declarations---
+   126	  double dist = 0; // Distance between 2 points 
+   127	
+   128	  //---Executables---
+   129	  // Calculations
+   130	  dist = sqrt(pow(x_f - x_i, 2) + pow(y_f - y_i, 2));
+   131	  
+   132	  //---End---
+   133	  return(dist);
+   134	}
+   135	
+   136	/***************************************************************************
+   137	*
+   138	*  Function Information
+   139	*
+   140	*  Name of Function: CalcInCen_X
+   141	*
+   142	*  Function Return Type: double
+   143	*
+   144	*  Parameters (list data type, name, and comment one per line):
+   145	*    1. double d_12 distance between point 1 and 2
+   146	*    2. double d_23 distance between point 2 and 3
+   147	*    3. double d_31 distance between point 3 and 1
+   148	*    4. int x_1 x coord of point 1
+   149	*    5. int x_2 x coord of point 2
+   150	*    6. int x_3 x coord of point 3
+   151	*
+   152	*  Function Description: Calculates x coord of incenter using variables above
+   153	*
+   154	***************************************************************************/
+   155	double CalcInCen_X(double d_12, double d_23, double d_31, int x_1, int x_2, int x_3)
+   156	{
+   157	  //---Declarations---
+   158	  double incen_x = 0; // x coord of incenter
+   159	
+   160	  //---Executables---
+   161	  // Calculations
+   162	  incen_x = ((d_12 * x_3) + (d_23 * x_1) + (d_31 * x_2)) / (d_12 + d_23 + d_31);
+   163	
+   164	  //---End---
+   165	  return(incen_x);
+   166	}
+   167	
+   168	/***************************************************************************
+   169	*
+   170	*  Function Information
+   171	*
+   172	*  Name of Function: CalcInCen_Y
+   173	*
+   174	*  Function Return Type: double
+   175	*
+   176	*  Parameters (list data type, name, and comment one per line):
+   177	*    1. double d_12 distance between point 1 and 2
+   178	*    2. double d_23 distance between point 2 and 3
+   179	*    3. double d_31 distance between point 3 and 1
+   180	*    4. int y_1 y coord of point 1
+   181	*    5. int y_2 y coord of point 2
+   182	*    6. int y_3 y coord of point 3
+   183	*
+   184	*  Function Description: Calculates y coord of incenter using variables above
+   185	*
+   186	***************************************************************************/
+   187	double CalcInCen_Y(double d_12, double d_23, double d_31, int y_1, int y_2, int y_3)
+   188	{
+   189	  //---Declarations---
+   190	  double incen_y = 0; // y coord of incenter
+   191	
+   192	  //---Executables---
+   193	  // Calculations
+   194	  incen_y = ((d_12 * y_3) + (d_23 * y_1) + (d_31 * y_2)) / (d_12 + d_23 + d_31);
+   195	
+   196	  //---End---
+   197	  return(incen_y);
+   198	}
+   199	
+   200	/***************************************************************************
+   201	*
+   202	*  Function Information
+   203	*
+   204	*  Name of Function: Output
+   205	*
+   206	*  Function Return Type: void
+   207	*
+   208	*  Parameters (list data type, name, and comment one per line):
+   209	*    1. double d_12 distance between point 1 and 2
+   210	*    2. double d_23 distance between point 2 and 3
+   211	*    3. double d_31 distance between point 3 and 1
+   212	*    4. double incen_x x coord of incenter
+   213	*    5. double incen_y y coord of incenter
+   214	*
+   215	*  Function Description: Output above variables
+   216	*
+   217	***************************************************************************/
+   218	void Output(double d_12, double d_23, double d_31, double incen_x, double incen_y)
+   219	{
+   220	  //---Executables---
+   221	  printf("\nDistance from point 1 to point 2: %0.2lf", d_12);
+   222	  printf("\nDistance from point 2 to point 3: %0.2lf", d_23);
+   223	  printf("\nDistance from point 3 to point 1: %0.2lf", d_31);
+   224	  printf("\nLocation of incenter: %0.2lf, %0.2lf\n", incen_x, incen_y);
+   225	}

@@ -1,0 +1,214 @@
+The following program submission has been recorded:
+
+Student: rmsundar
+Class: CS159
+Section: 15906
+Assignment: lab09.c
+Submission: 2021-04-07 19:23
+
+If the above is incorrect, you are responsible for resubmitting the assignment or seeking assistance from a course staff member prior to the due date! Assignments will never be accepted by e-mail.
+
+If this is for a lab assignment, only one member must be designated to make a submission for the group.  Graders will not evaluate submissions from multiple group members to determine which effort you actually want graded.
+
+*** Please do not reply to this email ***
+
+The contents of the submission:
+     1	/************************************************************************
+     2	*
+     3	*  Programmers and Purdue Email Addresses:
+     4	*  1. mcouso@purdue.edu
+     5	*  2. rmsundar@purdue.edu
+     6	*  3. jiang781@purdue.edu
+     7	*
+     8	*  Lab #: 09
+     9	*
+    10	*  Academic Integrity Statement:
+    11	*
+    12	*  We have not used source code obtained from any otherunauthorized source,
+    13	*  either modified or unmodified.  Neither have we provided access to our code
+    14	*  to another. The effort we are submitting is our own original work.
+    15	*
+    16	*  Day, Time, Location of Lab: Asynchronous Online
+    17	*
+    18	*  Program Description: Given twenty non-negative decimal integer values as input convert all odd numbers into binary and even numbers into octal.
+    19	*
+    20	************************************************************************/
+    21	#include <stdio.h>
+    22	#include <math.h>
+    23	
+    24	#define INT_LIST_COUNT 20
+    25	
+    26	void Input (int []);
+    27	int getOctalValue(int);
+    28	int getBinaryValue(int);
+    29	void Output(int []);
+    30	
+    31	int main(void) 
+    32	{
+    33	  //---Declarations---
+    34	  int integers[INT_LIST_COUNT] = {0}; //Store the user inputs into an array 
+    35	  
+    36	  //---Executables---
+    37	  Input (integers);
+    38	  Output (integers);
+    39	
+    40	  //---Exit---
+    41	  return(0);
+    42	}
+    43	
+    44	/***************************************************************************
+    45	*
+    46	*  Function Information
+    47	*
+    48	*  Name of Function:Input
+    49	*
+    50	*  Function Return Type: void
+    51	*
+    52	*  Parameters (list data type, name, and comment one per line):
+    53	*    1. int decimal[]: access the integer [] in main 
+    54	*
+    55	*  Function Description:
+    56	*
+    57	***************************************************************************/
+    58	void Input (int decimal[])
+    59	{
+    60	  //---Declarations--- 
+    61	  int i = 0; //loop control condition 
+    62	  
+    63	  //---Executables---
+    64	  printf("Enter 20 integer values -> ");
+    65	
+    66	  for (i = 0; i < INT_LIST_COUNT; i++)
+    67	  {
+    68	    scanf("%d", &decimal[i]);
+    69	  }
+    70	}
+    71	/***************************************************************************
+    72	*
+    73	*  Function Information
+    74	*
+    75	*  Name of Function:getOctalValue
+    76	*
+    77	*  Function Return Type: int 
+    78	*
+    79	*  Parameters (list data type, name, and comment one per line):
+    80	*    1.int value: the input decimal 
+    81	*
+    82	*  Function Description: Convert the input decimal into equivalnet octal value
+    83	*
+    84	***************************************************************************/
+    85	int getOctalValue(int value)
+    86	{
+    87	  //---Declarations---
+    88	  int octal_Value = 0; //octal (base 8) equivalent to the parameter 
+    89	  int quotient; //the remaining value of parameter divided by 8
+    90	  int count = 0; //counts the number of the iterations
+    91	  
+    92	  //---Executables--- 
+    93	  if (value < 8)
+    94	  {
+    95	    octal_Value = value;
+    96	  }
+    97	  else
+    98	  {
+    99	    while (value != 0)
+   100	    {
+   101	      quotient = value % 8;
+   102	      value = value / 8;
+   103	      octal_Value = quotient * (pow(10, count)) + octal_Value;
+   104	      count = count + 1;
+   105	    }
+   106	  }
+   107	
+   108	  //---Exit---
+   109	  return (octal_Value);
+   110	}
+   111	
+   112	/***************************************************************************
+   113	*
+   114	*  Function Information
+   115	*
+   116	*  Name of Function: getBinaryValue
+   117	*
+   118	*  Function Return Type: int
+   119	*
+   120	*  Parameters (list data type, name, and comment one per line):
+   121	*    1. int value: integer value
+   122	*
+   123	*  Function Description: Convert the integer value into a binary equivalent
+   124	*
+   125	***************************************************************************/
+   126	int getBinaryValue(int value)
+   127	{
+   128	  //---Declarations---
+   129	  int binary_Value = 0; //binary (base 2) equivalent to the parameter 
+   130	  int quotient; //the remaining value of parameter divided by 8
+   131	  int count = 0; //counts the number of the iterations
+   132	  
+   133	  //---Executables--- 
+   134	  
+   135	  while (value != 0)
+   136	  {
+   137	    quotient = value % 2;
+   138	    value = value / 2;
+   139	    binary_Value = quotient * (pow(10, count)) + binary_Value;
+   140	    count = count + 1;
+   141	  }
+   142	
+   143	  //---Exit---
+   144	  return (binary_Value);
+   145	}
+   146	
+   147	/***************************************************************************
+   148	*
+   149	*  Function Information
+   150	*
+   151	*  Name of Function: Ouput
+   152	*
+   153	*  Function Return Type: void
+   154	*
+   155	*  Parameters (list data type, name, and comment one per line):
+   156	*    1. int decimal [] The array for the values input by the user.
+   157	*
+   158	*  Function Description: Print the required ouput statement 
+   159	*
+   160	***************************************************************************/
+   161	void Output(int decimal[])
+   162	{
+   163	  //---Declarations---
+   164	  int i; //loop control statement 
+   165	  int count = 0; //counts the number of iterations 
+   166	
+   167	  //---Executables---
+   168	  printf("\nBinary values: ");
+   169	  for (i = 0; i < INT_LIST_COUNT; i++)
+   170	  {
+   171	    if (decimal[i] % 2 == 1)
+   172	    {
+   173	      printf("%d ", getBinaryValue(decimal[i]));
+   174	      count += 1;
+   175	    }
+   176	  }
+   177	
+   178	  if (count == 0)
+   179	  {
+   180	    printf("None");
+   181	  }
+   182	  
+   183	  printf("\nOctal values: ");
+   184	  count = 0;
+   185	  for (i = 0; i < INT_LIST_COUNT; i++)
+   186	  {
+   187	    if (decimal[i] % 2 == 0)
+   188	    {
+   189	      printf("%d ", getOctalValue(decimal[i]));
+   190	      count++;
+   191	    }
+   192	  }
+   193	
+   194	  if (count == 0)
+   195	  {
+   196	    printf("None");
+   197	  }
+   198	  printf("\n");
+   199	}

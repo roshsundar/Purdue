@@ -1,0 +1,249 @@
+The following program submission has been recorded:
+
+Student: rmsundar
+Class: CS159
+Section: 15906
+Assignment: lab07.c
+Submission: 2021-03-24 18:06
+
+If the above is incorrect, you are responsible for resubmitting the assignment or seeking assistance from a course staff member prior to the due date! Assignments will never be accepted by e-mail.
+
+If this is for a lab assignment, only one member must be designated to make a submission for the group.  Graders will not evaluate submissions from multiple group members to determine which effort you actually want graded.
+
+*** Please do not reply to this email ***
+
+The contents of the submission:
+     1	/************************************************************************
+     2	*
+     3	*  Programmers and Purdue Email Addresses:
+     4	*  1. mcouso@purdue.edu
+     5	*  2. rmsundar@purdue.edu
+     6	*  3. jiang781@purdue.edu
+     7	*
+     8	*  Lab #: 07
+     9	*
+    10	*  Academic Integrity Statement:
+    11	*
+    12	*  We have not used source code obtained from any other unauthorized source,
+    13	*  either modified or unmodified.  Neither have we provided access to our code
+    14	*  to another. The effort we are submitting is our own original work.
+    15	*
+    16	*  Day, Time, Location of Lab: Asynchronous Online
+    17	*
+    18	*  Program Description: Given a non-negative decimal (base 10) integer value as input display the octal (base 8) equivalent. The program is also expectedto display the change in odd and even digits between the two numbers (base 10 and base 8 equivalent).
+    19	*
+    20	************************************************************************/
+    21	#include <stdio.h>
+    22	#include <math.h>
+    23	
+    24	int getInput();
+    25	int getOctalValue(int);
+    26	int CountEvenDigits(int);
+    27	int CountOddDigits(int);
+    28	void Output(int, int);
+    29	
+    30	int main(void)
+    31	{
+    32	  //---Declarations---
+    33	  int value; //The value input by the user
+    34	  int octal_Value; //The value of the decimal converted into octal
+    35	  
+    36	  //---Executables---
+    37	  value = getInput();
+    38	  octal_Value = getOctalValue(value);
+    39	  Output(value, octal_Value);
+    40	  
+    41	  //---Exit---
+    42	  return(0);
+    43	}
+    44	
+    45	/***************************************************************************
+    46	*
+    47	*  Function Information
+    48	*
+    49	*  Name of Function: getInput
+    50	*
+    51	*  Function Return Type: int
+    52	*
+    53	*  Parameters (list data type, name, and comment one per line):
+    54	*    1. N/A
+    55	*  
+    56	*
+    57	*  Function Description: The user inputs the value of the decimal user wants converted into octal form
+    58	*
+    59	***************************************************************************/
+    60	int getInput()
+    61	{
+    62	  //---Declarations---
+    63	  int value; // Stores the decimal int that user will input
+    64	  
+    65	  //---Executables---
+    66	  do
+    67	  {
+    68	    printf("Enter decimal value -> ");
+    69	    scanf("%d", &value);
+    70	
+    71	    if (value < 0)
+    72	    {
+    73	      printf("\nError! The decimal value provided should be non-negative.\n\n");
+    74	    }
+    75	  }
+    76	  while (value < 0);
+    77	  
+    78	  //---Exit---
+    79	  return (value);
+    80	}
+    81	
+    82	/***************************************************************************
+    83	*
+    84	*  Function Information
+    85	*
+    86	*  Name of Function: getOctalValue
+    87	*
+    88	*  Function Return Type: int
+    89	*
+    90	*  Parameters (list data type, name, and comment one per line):
+    91	*    1. int value The value of the decimal input by the user
+    92	*    
+    93	*  Function Description: Takes the decimal input by the user and converts it into an octal (base 8) form.
+    94	*
+    95	***************************************************************************/
+    96	int getOctalValue(int value)
+    97	{
+    98	  //---Declarations---
+    99	  int octal_Value = 0; //octal (base 8) equivalent to the parameter 
+   100	  int quotient; //the remaining value of parameter divided by 8
+   101	  int count = 0; //counts the number of the iterations  
+   102	  
+   103	  //---Executables--- 
+   104	  if (value < 8)
+   105	  {
+   106	    octal_Value = value;
+   107	  }
+   108	  
+   109	  while (value != 0)
+   110	  {
+   111	    quotient = value % 8;
+   112	    value = value / 8;
+   113	    octal_Value = quotient * (pow(10, count)) + octal_Value;
+   114	    count = count + 1;
+   115	  }
+   116	  //---Exit---
+   117	  return (octal_Value);
+   118	}
+   119	
+   120	/***************************************************************************
+   121	*
+   122	*  Function Information
+   123	*
+   124	*  Name of Function: CountEvenDigits
+   125	*
+   126	*  Function Return Type: int
+   127	*
+   128	*  Parameters (list data type, name, and comment one per line):
+   129	*    1. int value The value of the decimal input by the user
+   130	*    
+   131	*  Function Description: Counts the even digits of the decimal in decimal (base 10) and octal (base 8) form.
+   132	*
+   133	***************************************************************************/
+   134	int CountEvenDigits(int value)
+   135	{
+   136	  //---Declarations---
+   137	  int even_count = 0; // Stores the count of even numbers in value
+   138	  int rem = 0; // Stores the current digit/remainder in the value
+   139	  
+   140	  //---Executables---
+   141	  while(value > 0)
+   142	  {
+   143	    rem = value % 10;
+   144	    if(rem % 2 == 0)
+   145	    {
+   146	      even_count++;
+   147	    }
+   148	    value /= 10;
+   149	  }
+   150	
+   151	  //---Exit---
+   152	  return(even_count);
+   153	}
+   154	
+   155	/***************************************************************************
+   156	*
+   157	*  Function Information
+   158	*
+   159	*  Name of Function: CountOddDigits
+   160	*
+   161	*  Function Return Type: int
+   162	*
+   163	*  Parameters (list data type, name, and comment one per line):
+   164	*    1. int value The value of the decimal input by the user
+   165	*
+   166	*  Function Description: Counts the odd digits of the decimal in decimal (base 10) and octal (base 8) form.
+   167	*
+   168	***************************************************************************/
+   169	int CountOddDigits(int value)
+   170	{
+   171	  //---Declarations---
+   172	  int odd_count = 0; //The number of odd digits in the number.
+   173	  int rem = 0; //The remainder after dividing the value by 10.
+   174	  
+   175	  //---Executables--- 
+   176	  while(value > 0)
+   177	  {
+   178	    rem = value % 10;
+   179	    if(rem % 2 == 1)
+   180	    {
+   181	      odd_count++;
+   182	    }
+   183	    value /= 10; 
+   184	  }
+   185	
+   186	  //---Exit---
+   187	  return(odd_count);
+   188	}
+   189	
+   190	/***************************************************************************
+   191	*
+   192	*  Function Information
+   193	*
+   194	*  Name of Function: Output
+   195	*
+   196	*  Function Return Type: void
+   197	*
+   198	*  Parameters (list data type, name, and comment one per line):
+   199	*    1. int value The value of the decimal input by the user
+   200	*    2. int octal_Value The decimal input by the user, converted into octal form
+   201	*
+   202	*  Function Description: Displays the above parameters while calculating the change in even digits and odd digits between the value of the decimal and the octal form of the decimal, then displays those results.
+   203	*
+   204	***************************************************************************/
+   205	void Output(int value, int octal_Value)
+   206	{
+   207	  //---Declarations---
+   208	  int even_change = 0; //The change of even digits from the octal to the decimal.
+   209	  int odd_change = 0; //The change of odd digits from the octal to the decimal.
+   210	
+   211	  //---Executables---
+   212	  printf("\nOctal equivalent: %d", octal_Value);
+   213	  
+   214	  even_change = CountEvenDigits(value) - CountEvenDigits(octal_Value);
+   215	  odd_change = CountOddDigits(value) - CountOddDigits(octal_Value);
+   216	
+   217	  if(odd_change > 0)
+   218	  {
+   219	    printf("\nOdd digit change: +%d", odd_change);
+   220	  }
+   221	  else
+   222	  {
+   223	    printf("\nOdd digit change: %d", odd_change);
+   224	  }
+   225	  
+   226	  if(even_change > 0)
+   227	  {
+   228	    printf("\nEven digit change: +%d\n", even_change);
+   229	  }
+   230	  else
+   231	  {
+   232	    printf("\nEven digit change: %d\n", even_change);
+   233	  }
+   234	}
