@@ -1,0 +1,23 @@
+Graded on 11-18 00:49:14
+Graded on Commit ID: 1bf70f47ee64f0058a1ca44cd9efcb43bb0e8f1f
+
+Grade: 75.0%
+Submission was 0 Days late.
+Feedback:
+hw compiled correctly! going to next step...
+- Test case 1 is correct!
+- Test case 2 is correct!
+- Test case 3 is correct!
+- Test case 4 is correct!
+- Test case 5 is correct!
+- Test case 6 is correct!
+- Test case 7 is correct!
+- 7/7 test cases passed!
+- 16 byte(s) of memory leak present in test case 1
+- 16 byte(s) of memory leak present in test case 2
+- 16 byte(s) of memory leak present in test case 3
+- 16 byte(s) of memory leak present in test case 4
+- 16 byte(s) of memory leak present in test case 5
+- 16 byte(s) of memory leak present in test case 6
+- 16 byte(s) of memory leak present in test case 7
+- 
