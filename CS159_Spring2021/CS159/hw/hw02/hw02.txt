@@ -1,0 +1,86 @@
+The following program submission has been recorded:
+
+Student: rmsundar
+Class: CS159
+Section: 15906
+Assignment: hw02.c
+Submission: 2021-02-09 11:45
+
+If the above is incorrect, you are responsible for resubmitting the assignment or seeking assistance from a course staff member prior to the due date! Assignments will never be accepted by e-mail.
+
+If this is for a lab assignment, only one member must be designated to make a submission for the group.  Graders will not evaluate submissions from multiple group members to determine which effort you actually want graded.
+
+*** Please do not reply to this email ***
+
+The contents of the submission:
+     1	
+     2	/***************************************************************************
+     3	*
+     4	*  Programmer and Purdue Email Address:
+     5	*  1. rmsundar@purdue.edu
+     6	*
+     7	*  Homework #: 2
+     8	*
+     9	*  Academic Integrity Statement:
+    10	*
+    11	*  I have not used source code obtained from any other unauthorized source, 
+    12	*  either modified or unmodified.  Neither have I provided access to my code 
+    13	*  to another. The effort I am submitting is my own original work.
+    14	*
+    15	*  Day, Time, Location of Lab: Distance
+    16	*
+    17	*  Program Description: The user inputs the  mass of an airplane, the amount of forward force produced by its propellers, and *  the mass of the TWO gliders it is towing (airplane connected to first glider and the first glider is connected to the
+    18	*  second glider). The program calculates the resulting tension on each cable connecting the aircraft and the acceleration of *  the glider.
+    19	*
+    20	***************************************************************************/
+    21	#include <stdio.h>
+    22	#include <math.h>
+    23	
+    24	int main(void)
+    25	{
+    26	  //---Local Declarations---
+    27	  double m_p = 0; // mass of plane
+    28	  double f_sys = 0; // force of the system/propellers
+    29	  double a_sys = 0; // acceleration of system
+    30	
+    31	  double m_g1 = 0; // mass of glider1
+    32	  double m_g2 = 0; // mass of glider2
+    33	
+    34	  double f_t1 = 0; // force of tension on cable1
+    35	  double f_t2 = 0; // force of tension on cable2
+    36	  
+    37	  int w = 0; // width modifier for output
+    38	
+    39	  //---Executable Statements--
+    40	  // Input
+    41	  printf("Enter mass of airplane (kg) -> ");
+    42	  scanf("%lf", &m_p);
+    43	
+    44	  printf("Enter mass of glider #1 (kg) -> ");
+    45	  scanf("%lf", &m_g1);
+    46	
+    47	  printf("Enter mass of glider #2 (kg) -> ");
+    48	  scanf("%lf", &m_g2);
+    49	  
+    50	  printf("Enter force produced by propellers (N) -> ");
+    51	  scanf("%lf", &f_sys);
+    52	
+    53	  // Calculations
+    54	  a_sys = f_sys / (m_p + m_g1 + m_g2);
+    55	  
+    56	  f_t1 = f_sys - (m_p * a_sys);
+    57	
+    58	  f_t2 = f_t1 - (m_g1 * a_sys);
+    59	  
+    60	  w = log10(f_sys) + 6;
+    61	
+    62	  // Output
+    63	  printf("\nAcceleration: %0.2lf m/s^2", a_sys);
+    64	  printf("\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+    65	  printf("\nResulting tension on cable #1: %*.2lf Newtons", w, f_t1);
+    66	  printf("\nResulting tension on cable #2: %*.2lf Newtons", w, f_t2);
+    67	  printf("\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n");
+    68	  
+    69	  // End
+    70	  return(0);
+    71	}

@@ -1,0 +1,431 @@
+The following program submission has been recorded:
+
+Student: rmsundar
+Class: CS159
+Section: 15906
+Assignment: hw06.c
+Submission: 2021-04-10 22:09
+
+If the above is incorrect, you are responsible for resubmitting the assignment or seeking assistance from a course staff member prior to the due date! Assignments will never be accepted by e-mail.
+
+If this is for a lab assignment, only one member must be designated to make a submission for the group.  Graders will not evaluate submissions from multiple group members to determine which effort you actually want graded.
+
+*** Please do not reply to this email ***
+
+The contents of the submission:
+     1	/***************************************************************************
+     2	*
+     3	*  Programmer and Purdue Email Address:
+     4	*  1. rmsundar@purdue.edu
+     5	*
+     6	*  Homework #: 6
+     7	*
+     8	*  Academic Integrity Statement:
+     9	*
+    10	*  I have not used source code obtained from any other unauthorized source,
+    11	*  either modified or unmodified.  Neither have I provided access to my code
+    12	*  to another. The effort I am submitting is my own original work.
+    13	*
+    14	*  Day, Time, Location of Lab: DIST
+    15	*
+    16	*  Program Description:  User inputs the value of ten years and a desired day of the week. Program displays the months within the first year that begin on the desired day of the week. For the second through the tenth year the
+    17	desired day of the week will continually be incremented.
+    18	*
+    19	***************************************************************************/
+    20	#include <stdio.h>
+    21	
+    22	#define YEARS_LENGTH 10
+    23	
+    24	void Input(int [], int*);
+    25	int Get_Month_Days(int, int);
+    26	int Calc_first_day_code(int);
+    27	void Output_Day(int);
+    28	void Output_Month(int);
+    29	void Determine_Months(int, int);
+    30	void Output(int, int[]);
+    31	
+    32	int main(void)
+    33	{
+    34	  //---Declarations---
+    35	  int years[YEARS_LENGTH] = {}; // Years between 1700-2100
+    36	  int day_code = 0; // Code 0-6 representing Sun-Sat
+    37	
+    38	  //---Executables---
+    39	  Input(years, &day_code);
+    40	  Output(day_code, years);
+    41	
+    42	  //---Exit---
+    43	  return(0);
+    44	}
+    45	
+    46	/***************************************************************************
+    47	*
+    48	*  Function Information
+    49	*
+    50	*  Name of Function: Input
+    51	*
+    52	*  Function Return Type: void
+    53	*
+    54	*  Parameters (list data type, name, and comment one per line):
+    55	*    1. int years[] // Years between 1700-2100
+    56	*    2. int *day_code // Pointer to day_code variable in main()
+    57	*
+    58	*  Function Description: Get user input for the 10 years and the day
+    59	*
+    60	***************************************************************************/
+    61	void Input(int years[], int *day_code)
+    62	{
+    63	  //---Declarations
+    64	  int i = 0; // Counter
+    65	
+    66	  //---Executables---
+    67	  printf("Enter 10 years [1700 - 2100] -> ");
+    68	  for(i = 0; i < YEARS_LENGTH; i++)
+    69	  {
+    70	    scanf("%d", &years[i]);
+    71	  }
+    72	  
+    73	  do
+    74	  {
+    75	    printf("Enter day of week number -> ");
+    76	    scanf("%d", day_code);
+    77	    printf("\n");
+    78	
+    79	    if(*day_code < 0 || *day_code > 6)
+    80	    {
+    81	      printf("Error! Day of the week must be 0 to 6.\n\n");
+    82	    }
+    83	
+    84	  } while(*day_code < 0 || *day_code > 6);
+    85	}
+    86	
+    87	/***************************************************************************
+    88	*
+    89	*  Function Information
+    90	*
+    91	*  Name of Function: Get_Month_Days
+    92	*
+    93	*  Function Return Type: int
+    94	*
+    95	*  Parameters (list data type, name, and comment one per line):
+    96	*    1. int month_code // Code 1-12 for a given month
+    97	*    2. int year // Year between 1800-2100
+    98	*
+    99	*  Function Description: Return the number of days for a given month in a given year
+   100	*
+   101	***************************************************************************/
+   102	int Get_Month_Days(int month_code, int year)
+   103	{
+   104	  //---Declarations---
+   105	  int days = 0; // Number of days in a given month
+   106	
+   107	  //---Executables---
+   108	  switch(month_code)
+   109	  {
+   110	    case 1: 
+   111	      // January
+   112	      days = 31;
+   113	      break;
+   114	    
+   115	    case 2: 
+   116	      // February
+   117	      if((!(year % 4) && (year % 100)) || !(year % 400))
+   118	      {
+   119	        days = 29;
+   120	      }
+   121	      else
+   122	      {
+   123	        days = 28;
+   124	      }
+   125	      break;
+   126	    
+   127	    case 3: 
+   128	      // March
+   129	      days = 31;
+   130	      break;
+   131	    
+   132	    case 4: 
+   133	      // April
+   134	      days = 30;
+   135	      break;
+   136	    
+   137	    case 5: 
+   138	      // May
+   139	      days = 31;
+   140	      break;
+   141	    
+   142	    case 6: 
+   143	      // June
+   144	      days = 30;
+   145	      break;
+   146	    
+   147	    case 7: 
+   148	      // July
+   149	      days = 31;
+   150	      break;
+   151	    
+   152	    case 8: 
+   153	      // August
+   154	      days = 31;
+   155	      break;
+   156	    
+   157	    case 9: 
+   158	      // September
+   159	      days = 30;
+   160	      break;
+   161	    
+   162	    case 10: 
+   163	      // October
+   164	      days = 31;
+   165	      break;
+   166	    
+   167	    case 11: 
+   168	      // November
+   169	      days = 30;
+   170	      break;
+   171	    
+   172	    case 12: 
+   173	      // December
+   174	      days = 31;
+   175	      break;
+   176	  }
+   177	
+   178	  //---Exit---
+   179	  return(days);
+   180	}
+   181	
+   182	/***************************************************************************
+   183	*
+   184	*  Function Information
+   185	*
+   186	*  Name of Function: Calc_first_day_code
+   187	*
+   188	*  Function Return Type: int
+   189	*
+   190	*  Parameters (list data type, name, and comment one per line):
+   191	*    1. int year // Year input by user
+   192	*
+   193	*  Function Description: Calculate the code 0-6 for the first day of the week
+   194	*
+   195	***************************************************************************/
+   196	int Calc_first_day_code(int year)
+   197	{
+   198	  //---Declarations---
+   199	  int first_day_code = 0; // The code for the first day
+   200	
+   201	  //---Executables---
+   202	  first_day_code = ((year - 1) * 365) + ((year - 1) / 4) - ((year - 1) / 100) + ((year - 1) / 400); // From pg 300 of textbook
+   203	  first_day_code = first_day_code % 7 + 1;
+   204	
+   205	  if(first_day_code == 7)
+   206	  {
+   207	    first_day_code = 0;
+   208	  }
+   209	  
+   210	  //---Exit---
+   211	  return(first_day_code);
+   212	}
+   213	
+   214	/***************************************************************************
+   215	*
+   216	*  Function Information
+   217	*
+   218	*  Name of Function: Output_Day
+   219	*
+   220	*  Function Return Type: void
+   221	*
+   222	*  Parameters (list data type, name, and comment one per line):
+   223	*    1. int day_code // Code 0-6 for sun-sat
+   224	*
+   225	*  Function Description: Print sun-sat given a day code
+   226	*
+   227	***************************************************************************/
+   228	void Output_Day(int day_code)
+   229	{
+   230	  //---Executables---
+   231	  switch(day_code)
+   232	  {
+   233	    case 0: 
+   234	      printf("Sunday");
+   235	      break;
+   236	    
+   237	    case 1: 
+   238	      printf("Monday");
+   239	      break;
+   240	    
+   241	    case 2: 
+   242	      printf("Tuesday");
+   243	      break;
+   244	    
+   245	    case 3: 
+   246	      printf("Wednesday");
+   247	      break;
+   248	    
+   249	    case 4: 
+   250	      printf("Thursday");
+   251	      break;
+   252	    
+   253	    case 5: 
+   254	      printf("Friday");
+   255	      break;
+   256	    
+   257	    case 6: 
+   258	      printf("Saturday");
+   259	      break;
+   260	  }
+   261	}
+   262	
+   263	/***************************************************************************
+   264	*
+   265	*  Function Information
+   266	*
+   267	*  Name of Function: Output_Month
+   268	*
+   269	*  Function Return Type: void
+   270	*
+   271	*  Parameters (list data type, name, and comment one per line):
+   272	*    1. int month_code // Code 1-12 for a given month
+   273	*
+   274	*  Function Description: Print the month for a given month code
+   275	*
+   276	***************************************************************************/
+   277	void Output_Month(int month_code)
+   278	{
+   279	  //---Executables---
+   280	  switch(month_code)
+   281	  {
+   282	    case 1: 
+   283	      printf("January");
+   284	      break;
+   285	
+   286	    case 2: 
+   287	      printf("February");
+   288	      break;
+   289	
+   290	    case 3: 
+   291	      printf("March");
+   292	      break;
+   293	
+   294	    case 4: 
+   295	      printf("April");
+   296	      break;
+   297	
+   298	    case 5: 
+   299	      printf("May");
+   300	      break;
+   301	
+   302	    case 6: 
+   303	      printf("June");
+   304	      break;
+   305	
+   306	    case 7: 
+   307	      printf("July");
+   308	      break;
+   309	
+   310	    case 8: 
+   311	      printf("August");
+   312	      break;
+   313	
+   314	    case 9: 
+   315	      printf("September");
+   316	      break;
+   317	
+   318	    case 10: 
+   319	      printf("October");
+   320	      break;
+   321	
+   322	    case 11: 
+   323	      printf("November");
+   324	      break;
+   325	
+   326	    case 12: 
+   327	      printf("December");
+   328	      break;
+   329	  }
+   330	}
+   331	
+   332	/***************************************************************************
+   333	*
+   334	*  Function Information
+   335	*
+   336	*  Name of Function: Determine_Months
+   337	*
+   338	*  Function Return Type: void
+   339	*
+   340	*  Parameters (list data type, name, and comment one per line):
+   341	*    1. int day_code // Code 0-6 representing Sun-Sat
+   342	*    2. int year // Year between 1700-2100
+   343	*
+   344	*  Function Description: Determine the months that start with the given day in the given year
+   345	*
+   346	***************************************************************************/
+   347	void Determine_Months(int day_code, int year)
+   348	{
+   349	  //---Declarations---
+   350	  int month_code = 0; // Code 1-12 representing Jan-Dec
+   351	  int day = 0; // Counter representing day in the month
+   352	  int day_code_ticker = -1; // Counter code 0-6 representing Sun-Sat for given day
+   353	
+   354	  //---Executables---
+   355	  day_code_ticker = Calc_first_day_code(year);
+   356	  
+   357	  for(month_code = 1; month_code <= 12; month_code++)
+   358	  {
+   359	    if(day_code_ticker == day_code)
+   360	    {
+   361	      printf(" ");
+   362	      Output_Month(month_code);
+   363	    }
+   364	
+   365	    for(day = 1; day <= Get_Month_Days(month_code, year); day++)
+   366	    {
+   367	      day_code_ticker++;
+   368	      if(day_code_ticker > 6)
+   369	      {
+   370	        day_code_ticker = 0;
+   371	      }
+   372	    }
+   373	  }
+   374	}
+   375	
+   376	/***************************************************************************
+   377	*
+   378	*  Function Information
+   379	*
+   380	*  Name of Function: Output
+   381	*
+   382	*  Function Return Type: void
+   383	*
+   384	*  Parameters (list data type, name, and comment one per line):
+   385	*    1. int day_code // Code 0-6 representing Sun-Sat
+   386	*    2. int years[] // Years between 1700-2100
+   387	*
+   388	*  Function Description: Output the relevant day and months for each year
+   389	*
+   390	***************************************************************************/
+   391	void Output(int day_code, int years[])
+   392	{
+   393	  //---Declarations---
+   394	  int i = 0; // Counter
+   395	
+   396	  //---Executables---
+   397	  printf("Desired day of the week: ");
+   398	  Output_Day(day_code);
+   399	
+   400	  for(i = 0; i < YEARS_LENGTH; i++)
+   401	  {
+   402	    if(day_code > 6)
+   403	    {
+   404	      day_code = 0;
+   405	    }
+   406	
+   407	    printf("\nMonths in %d starting on ", years[i]);
+   408	    Output_Day(day_code);
+   409	    printf(":");
+   410	
+   411	    Determine_Months(day_code, years[i]);
+   412	    
+   413	    day_code++;
+   414	  }
+   415	  printf("\n");
+   416	}

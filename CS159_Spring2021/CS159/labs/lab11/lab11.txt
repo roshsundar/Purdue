@@ -1,0 +1,246 @@
+The following program submission has been recorded:
+
+Student: rmsundar
+Class: CS159
+Section: 15906
+Assignment: lab11.c
+Submission: 2021-04-28 19:03
+
+If the above is incorrect, you are responsible for resubmitting the assignment or seeking assistance from a course staff member prior to the due date! Assignments will never be accepted by e-mail.
+
+If this is for a lab assignment, only one member must be designated to make a submission for the group.  Graders will not evaluate submissions from multiple group members to determine which effort you actually want graded.
+
+*** Please do not reply to this email ***
+
+The contents of the submission:
+     1	/************************************************************************
+     2	*
+     3	*  Programmers and Purdue Email Addresses:
+     4	*  1. mcouso@purdue.edu
+     5	*  2. rmsundar@purdue.edu
+     6	*  3. jiang781@purdue.edu
+     7	*
+     8	*  Lab #: 11
+     9	*
+    10	*  Academic Integrity Statement:
+    11	*
+    12	*  We have not used source code obtained from any other unauthorized source,
+    13	*  either modified or unmodified.  Neither have we provided access to our code
+    14	*  to another. The effort we are submitting is our own original work.
+    15	*
+    16	*  Day, Time, Location of Lab: Asynchronous Online
+    17	*
+    18	*  Program Description: Given a positive integer representing the size of an integer data set, accept input of that data set, and display the data sorted by odd and even with one additional requirement, an index that stores an odd value at the time of input must store an odd value after the data is sorted with the same requirement holding for even values.
+    19	*
+    20	************************************************************************/
+    21	
+    22	#include <stdio.h>
+    23	#include <stdlib.h>
+    24	
+    25	int InputSize();
+    26	void InputArray (int [], int);
+    27	void EvenSort(int[], int);
+    28	void OddSort(int[], int);
+    29	void Output(int[], int);
+    30	
+    31	int main(void)
+    32	{
+    33	  //---Declarations---
+    34	  int *intArray; //Store the user input value in an array
+    35	  int size; //The size of the user input array
+    36	  
+    37	  //---Executables---
+    38	  size = InputSize();
+    39	  intArray = (int*) malloc(sizeof(int) * size);
+    40	  InputArray(intArray, size);
+    41	  EvenSort(intArray, size - 1);
+    42	  OddSort(intArray, size - 1);
+    43	  Output(intArray, size - 1);
+    44	  
+    45	  //---Exit---
+    46	  return(0);
+    47	}
+    48	
+    49	/***************************************************************************
+    50	*
+    51	*  Function Information
+    52	*
+    53	*  Name of Function: InputSize
+    54	*
+    55	*  Function Return Type: int
+    56	*
+    57	*  Parameters (list data type, name, and comment one per line):
+    58	*
+    59	*  Function Description: Get size of array from user
+    60	*
+    61	***************************************************************************/
+    62	int InputSize()
+    63	{
+    64	  //---Declarations---
+    65	  int size; //Size of the array user wants
+    66	  
+    67	  //---Executables---
+    68	  printf("Enter data set size -> ");
+    69	  scanf("%d", &size);
+    70	
+    71	  //---Exit---
+    72	  return (size);
+    73	}
+    74	
+    75	/***************************************************************************
+    76	*
+    77	*  Function Information
+    78	*
+    79	*  Name of Function: InputArray
+    80	*
+    81	*  Function Return Type: void
+    82	*
+    83	*  Parameters (list data type, name, and comment one per line):
+    84	*    1. int intArray[]: array contains the input decimals
+    85	*    2. int size: size of the array
+    86	*
+    87	*  Function Description: Get inputs for the array
+    88	*
+    89	***************************************************************************/
+    90	void InputArray (int intArray[], int size)
+    91	{
+    92	  //---Declarations---
+    93	  int i; //Loop control variable
+    94	  
+    95	  //---Executables---
+    96	  printf("Enter %d integer values -> ", size);
+    97	  for(i = 0; i < size; i++)
+    98	  {
+    99	    scanf("%d", &intArray[i]);
+   100	  }
+   101	}
+   102	
+   103	/***************************************************************************
+   104	*
+   105	*  Function Information
+   106	*
+   107	*  Name of Function: EvenSort
+   108	*
+   109	*  Function Return Type: void
+   110	*
+   111	*  Parameters (list data type, name, and comment one per line):
+   112	*    1. int mainList []: array contains the input decimals
+   113	*    2. int lastIndex: Last index of the array mainList
+   114	*
+   115	*  Function Description: Sorts the even numbers in the array from least to greatest, keeping odd numbers in indexes given by the user.
+   116	*
+   117	***************************************************************************/
+   118	void EvenSort (int mainList [], int lastIndex)
+   119	{
+   120	  //---Declarations---
+   121	  int numPasses; //LCV THAT CONTROLS # OF PASSES
+   122	  int lcv; //LOOP CONTROL VARIABLE FOR SORTING
+   123	  int temp; //HOLDS VALUE DURING SWAP
+   124	  
+   125	  int evenValIndex; //Store the index that has a even value
+   126	  int i; //Loop control variable
+   127	
+   128	  //---Executables---
+   129	  for(numPasses = 1; numPasses <= lastIndex; numPasses++)
+   130	  {
+   131	    for(lcv = 0; lcv <= lastIndex - numPasses; lcv++)
+   132	    {
+   133	      temp = mainList[lcv];
+   134	      if(temp % 2 == 0)
+   135	      {
+   136	        for(i = lcv; i <= lastIndex; i++)
+   137	        {
+   138	          if(mainList[i] % 2 == 0)
+   139	          {
+   140	            evenValIndex = i;
+   141	            if(temp > mainList[i])
+   142	            {
+   143	              mainList[lcv] = mainList[i];
+   144	              mainList[i] = temp;
+   145	              temp = mainList[lcv];
+   146	            }
+   147	          }
+   148	        }
+   149	      }
+   150	    }
+   151	  }
+   152	}
+   153	
+   154	/***************************************************************************
+   155	*
+   156	*  Function Information
+   157	*
+   158	*  Name of Function: OddSort
+   159	*
+   160	*  Function Return Type: void
+   161	*
+   162	*  Parameters (list data type, name, and comment one per line):
+   163	*    1. int mainList []: array contains the input decimals
+   164	*    2. int lastIndex: Last index of the array mainList
+   165	*
+   166	*  Function Description: Sorts the odd numbers in the array from least to greatest, keeping odd numbers in indexes given by the user.
+   167	*
+   168	***************************************************************************/
+   169	void OddSort (int mainList [], int lastIndex)
+   170	{
+   171	  //---Declarations---
+   172	  int numPasses; //LCV THAT CONTROLS # OF PASSES
+   173	  int lcv; //LOOP CONTROL VARIABLE FOR SORTING
+   174	  int temp; //HOLDS VALUE DURING SWAP
+   175	  
+   176	  int oddValIndex; //Store the index that has a odd value
+   177	  int i; //Loop control variable
+   178	
+   179	  //---Executables---
+   180	  for(numPasses = 1; numPasses <= lastIndex; numPasses++)
+   181	  {
+   182	    for(lcv = 0; lcv <= lastIndex - numPasses; lcv++)
+   183	    {
+   184	      temp = mainList[lcv];
+   185	      if(temp % 2 == 1)
+   186	      {
+   187	        for(i = lcv; i <= lastIndex; i++)
+   188	        {
+   189	          if(mainList[i] % 2 == 1)
+   190	          {
+   191	            oddValIndex = i;
+   192	            if(temp > mainList[i])
+   193	            {
+   194	              mainList[lcv] = mainList[i];
+   195	              mainList[i] = temp;
+   196	              temp = mainList[lcv];
+   197	            }
+   198	          }
+   199	        }
+   200	      }
+   201	    }
+   202	  }
+   203	}
+   204	
+   205	/***************************************************************************
+   206	*
+   207	*  Function Information
+   208	*
+   209	*  Name of Function: Output
+   210	*
+   211	*  Function Return Type: void
+   212	*
+   213	*  Parameters (list data type, name, and comment one per line):
+   214	*    1. int decimals[]: array contains the input decimals
+   215	*    2. int size: last index of the decimals array 
+   216	*
+   217	*  Function Description: Displays the final sorted decimals array using the size (last index of array)
+   218	*
+   219	***************************************************************************/
+   220	void Output(int decimals[], int size)
+   221	{
+   222	  //---Declarations---
+   223	  int i; //Loop contol variable
+   224	
+   225	  //---Executables---
+   226	  printf("\nFinal data set order: ");
+   227	  for(i = 0; i <= size; i++)
+   228	  {
+   229	    printf("%d ", decimals[i]);
+   230	  }
+   231	}

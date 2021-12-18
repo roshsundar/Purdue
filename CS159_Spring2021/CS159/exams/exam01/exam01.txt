@@ -1,0 +1,92 @@
+The following program submission has been recorded:
+
+Student: rmsundar
+Class: CS159
+Section: 15906
+Assignment: exam01.c
+Submission: 2021-02-15 00:07
+
+If the above is incorrect, you are responsible for resubmitting the assignment or seeking assistance from a course staff member prior to the due date! Assignments will never be accepted by e-mail.
+
+If this is for a lab assignment, only one member must be designated to make a submission for the group.  Graders will not evaluate submissions from multiple group members to determine which effort you actually want graded.
+
+*** Please do not reply to this email ***
+
+The contents of the submission:
+     1	
+     2	/***************************************************************************
+     3	*
+     4	*  Programmers and Purdue Email Addresses:
+     5	*  1. rmsundar@purdue.edu
+     6	*
+     7	*  Lab #: exam 1
+     8	*
+     9	*  Academic Integrity Statement:
+    10	*
+    11	*  We have not used source code obtained from any other unauthorized source,
+    12	*  either modified or unmodified.  Neither have we provided access to our code
+    13	*  to another. The effort we are submitting is our own original work.
+    14	*
+    15	*  Day, Time, Location of Lab: Dist
+    16	*
+    17	*  Program Description: The user will provide a positive int value as the first input representing the following options:
+    18	*  (1) - A circle with an equilateral [T]riangle inscribed.
+    19	*  (2) - A circle with a [S]quare inscribed.
+    20	*  (3) or larger -  A regular polygon with a [C]ircle inscribed. The number of sides of the polygon is equal to the int input.
+    21	*
+    22	*  The second input is the area of the figure (circle for options 1 and 2, polygon for 3 or larger).
+    23	*  The program will calculate the radius or apothem and area of the inscribed figure.
+    24	***************************************************************************/
+    25	#include <stdio.h>
+    26	#include <math.h>
+    27	
+    28	int main(void)
+    29	{
+    30	  //-----Local Declarations-----
+    31	  int n = 0; // Option choice and # of polygon sides if n >= 3
+    32	  int factor1 = 0; // Weight for (1)
+    33	  int factor2 = 0; // Weight for (2)
+    34	  int factor3 = 0; // Weight for (3)
+    35	  
+    36	  double fig_area = 0; // Area of whole figure
+    37	  double r_a = 0; // Radius of circle (1),(2) or Apothem (3)
+    38	  double in_area = 0; // Area of inscribed figure
+    39	  
+    40	  int c = 0; // Integer representing inscribed shape letter
+    41	
+    42	  //-----Executable Statements-----
+    43	  // Input
+    44	  printf("Enter desired option -> ");
+    45	  scanf("%d", &n);
+    46	
+    47	  printf("Enter area of figure -> ");
+    48	  scanf("%lf", &fig_area);
+    49	  
+    50	  // Calculations
+    51	  // Calculate weights
+    52	  factor1 = 1 / n;
+    53	  factor2 = ((2 / n) * (2 % (n + 1))) / 2;
+    54	  factor3 = 1 - factor1 - factor2;
+    55	  
+    56	  // Caclulate (1) values
+    57	  r_a += factor1 * sqrt(fig_area / M_PI);
+    58	  in_area += factor1 * (3 * sqrt(3) * pow(r_a, 2) / 4);
+    59	
+    60	  // Calculate (2) values
+    61	  r_a += factor2 * sqrt(fig_area / M_PI);
+    62	  in_area += factor2 * (pow(2 * r_a, 2) / 2);
+    63	
+    64	  // Caclulate (3) values
+    65	  r_a += factor3 * (sqrt(4 * fig_area * fabs(tan(M_PI / n))) / (2 * sqrt(n) * fabs(tan(M_PI / n))));
+    66	  in_area += factor3 * M_PI * pow(r_a, 2);
+    67	  
+    68	  // Calculate output character
+    69	  c = (factor1 * 84) + (factor2 * 83) + (factor3 * 67);
+    70	  // Output
+    71	  printf("\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+    72	  printf("\nRadius/Apothem of figure with area given: %9.1lf", r_a);
+    73	  printf("\nArea of inscribed figure [%c]: %0.1lf\n", c, in_area);
+    74	  
+    75	  //-----End-----
+    76	  return(0);
+    77	}
