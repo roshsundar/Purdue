@@ -1,4 +1,4 @@
-# This is alternate coding approach to hw14. See the other code approach in hw-14-huffman-encoding-roshsundar.
+# This is alternate coding approach to hw14. See the other code approach in hw-14-huffman-encoding-roshsundar. README/Objectives are not different, only the code is different.
 
 
 -----------------------------------------------------------------------------------------------------------------------------------
