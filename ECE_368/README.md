@@ -17,8 +17,8 @@ A rough summary is given below for each project, see the appropriate readme for 
   - PA4: given a tree like in PA3, calculate dimensions of boxes using every possible representation/packing of that tree.
   
   PA5: given a grid of costs, use dijsktras algorithm to find fastest path from top of grid to bottom.
-    - PA5_minheap_slow: implementation 1, not submitted. Implementation of dijsktra with minheap as queue.
-    - PA5_pq_fast: implementation 2, submitted. Implementation of dijsktra with linked list as queue.
+  - PA5_minheap_slow: implementation 1, not submitted. Implementation of dijsktra with minheap as queue.
+  - PA5_pq_fast: implementation 2, submitted. Implementation of dijsktra with linked list as queue.
   
   - REPA1: resubmission of PA1. Optimized shell sort on linked list.
  
