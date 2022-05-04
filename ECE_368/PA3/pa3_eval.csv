@@ -1,0 +1,78 @@
+pa3 evaluation,,,,,,,,,,,,,,,
+cases,timeout,time(sec),rect count,node count,preorder valid,dimensions valid,coordinates valid,Used memory (bytes),Stack overflow,Memory leak,Memory error,,,,The evaluation script was able to compile your submission into the
+8.po,0,0.01755,8,15,15,15,8,3440,0,0,0,,,,executable pa3.
+50.po,0,0.00871,50,99,99,99,50,6800,0,0,0,,,,
+100.po,0,0.00901,100,199,199,199,100,10800,0,0,0,,,,"If there is an attachment CE_log.txt, it means that there were warning"
+500.po,0,0.01685,500,999,999,710,1,42800,0,0,0,,,,messages from the compiler.  You should pay attention to all the warning
+1K.po,0,0.01721,1000,1999,1999,1346,0,82800,0,0,0,,,,messages to make sure that it is indeed your intention to program in such a
+5K.po,0,0.03315,5000,9999,9999,6266,0,402800,0,0,0,,,,way that you have these warnings.   If your work does not work as intended
+10K.po,0,0.06519,10000,19999,19999,12367,0,802800,0,0,0,,,,"(see the feedback included in the attached grade_log.csv), fixing these"
+50K.po,0,0.16545,50000,99999,99999,61489,0,4002800,0,0,0,,,,warnings may sometimes eliminate these unpredictable behaviors.
+100K.po,0,0.21577,100000,199999,199999,122901,0,8002800,0,0,0,,,,
+500K.po,0,-1,500000,999999,-1,-1,-1,-1,1,-1,-1,,,,The attached grade_log.csv should be viewed as a spreadsheet.
+1M.po,0,-1,1000000,1999999,-1,-1,-1,-1,1,-1,-1,,,,The first set of grade_log.csv is used for test cases that should not have
+,,,,,,,,,,,,,,,caused stack overflow.  The grading is based on this first set of feedback.
+pa3 stack overflow evaluation (for your info only),,,,,,,,,,,,,,,The other two sets are for-you-information only.  The second set is to
+cases,timeout,time(sec),rect count,node count,preorder valid,dimensions valid,coordinates valid,Used memory (bytes),Stack overflow,Memory leak,Memory error,,,,investigate how your submission performs when we use test cases that may cause
+400Ks.po,0,-1,400000,799999,-1,-1,-1,-1,1,-1,-1,,,,stack overflow.  The third set is to investigate how your main function
+500Ks.po,0,-1,500000,999999,-1,-1,-1,-1,1,-1,-1,,,,handles different scenarios that should have it return EXIT_FAILURE.
+750Ks.po,0,-1,750000,1499999,-1,-1,-1,-1,1,-1,-1,,,,
+1Ms.po,0,-1,1000000,1999999,-1,-1,-1,-1,1,-1,-1,,,,"In the first set and second set, the first column contains the names"
+,,,,,,,,,,,,,,,of the test cases.  The remaining columns are as follows:
+pa3 main (for your info only),,,,,,,,,,,,,,,
+cases,timeout,wrong answer,Used memory (bytes),Stack overflow,Memory leak,Memory error,,,,,,,,,timeout: 0 if your program completed its execution within the time limit
+Invalid input filename test,0,0,568,0,0,0,,,,,,,,,         1 otherwise
+Invalid output filename test,0,0,2304,0,600,0,,,,,,,,,
+Too few arguments test,0,0,2872,0,600,1,,,,,,,,,time(sec): the runtime of your program if it is a positive number
+Too many arguments test,0,wrong return code,-1,-1,-1,-1,,,,,,,,,
+,,,,,,,,,,,,,,,rect count: the number of rectangles in the input files
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,node count: the number of nodes in the input files
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,preorder valid: -1: first output file not present
+,,,,,,,,,,,,,,,"                number of valid lines in the output file, should match"
+,,,,,,,,,,,,,,,                node count if the first output file is correct
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,dimensions valid: -1: second output file not present
+,,,,,,,,,,,,,,,"                number of valid dimensions in the output file, should match"
+,,,,,,,,,,,,,,,                node count if the second output file is correct
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,coordinates valid: -1: third output file not present
+,,,,,,,,,,,,,,,"                number of valid coordinates in the output file, should match"
+,,,,,,,,,,,,,,,                rect count if the third output file is correct
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,Used memory (bytes): amount of memory used by your program
+,,,,,,,,,,,,,,,"                     -1 when your program timed out, seg fault or stack overflow"
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,Stack overflow: 0 if no overflow
+,,,,,,,,,,,,,,,"                non-zero (timed out, segmentation fault, or actual overflow)"
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,Memory leak: 0 if no memory leak
+,,,,,,,,,,,,,,,             non-zero (timed out or actual memory leak)
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,Memory error: 0 if no memory error
+,,,,,,,,,,,,,,,             non-zero (timed out or actual memory error)
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,The third set investigates how the main function
+,,,,,,,,,,,,,,,"handles (1) an invalid input filename (the file does not exist),"
+,,,,,,,,,,,,,,,"(2) an output filename that cannot be written into, (3) fewer than"
+,,,,,,,,,,,,,,,"expected number of arguments, and (4) more than expected number of arguments. "
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,timeout: 0 if your program completed its execution within the time limit
+,,,,,,,,,,,,,,,         1 otherwise
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,wrong answer: 0 means returns the correct status
+,,,,,,,,,,,,,,,              other values mean the main function did not handle the testing
+,,,,,,,,,,,,,,,              properly
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,Used memory (bytes): amount of memory used by your program
+,,,,,,,,,,,,,,,"                     -1 when your program timed out, seg fault, or stack overflow"
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,Stack overflow: 0 if no overflow
+,,,,,,,,,,,,,,,"                non-zero (timed out, segmentation fault, or actual overflow)"
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,Memory leak: 0 if no memory leak
+,,,,,,,,,,,,,,,             non-zero (timed out or actual memory leak)
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,Memory error: 0 if no memory error
+,,,,,,,,,,,,,,,             non-zero (timed out or actual memory error)

@@ -1,0 +1,75 @@
+pa5 evaluation,,,,,,,,,,,,,,,,,,,,,,
+cases,timeout,time(sec),nrows,ncols,min time,max time,table file,valid table entries,time file,valid times,path file,reported time,evaluated time,a fastest path,Used memory (bytes),Stack overflow,Memory leak,Memory error,,,,The evaluation script was able to compile your submission into the
+5_5r,0,0.00902,5,5,12,19,1,27,1,5,1,12,12,1,3552,0,0,0,,,,executable pa5.
+5_5v,0,0.00926,5,5,13,14,1,27,1,5,1,13,13,1,3552,0,0,0,,,,
+5_5h,0,0.00896,5,5,13,21,1,27,1,5,1,13,13,1,3552,0,0,0,,,,"If there is an attachment CE_log.txt, it means that there were warning"
+10_10r,0,0.01704,10,10,28,40,1,102,1,10,1,28,28,1,7232,0,0,0,,,,messages from the compiler.  You should pay attention to all the warning
+10_10v,0,0.01732,10,13,64,65,1,132,1,13,1,64,64,1,8672,0,0,0,,,,messages to make sure that it is indeed your intention to program in such a
+10_10h,0,0.01726,10,10,46,64,1,102,1,10,1,46,46,1,7232,0,0,0,,,,way that you have these warnings.   If your work does not work as intended
+50_50r,0,0.01766,50,50,111,161,1,2502,1,50,1,111,111,1,123072,0,0,0,,,,"(see the feedback included in the attached grade_log.csv), fixing these"
+50_50v,0,0.01727,50,53,1324,1325,1,2652,1,53,1,1324,1324,1,130272,0,0,0,,,,warnings may sometimes eliminate these unpredictable behaviors.
+50_50h,0,0.01712,50,50,1226,1324,1,2502,1,50,1,1226,1226,1,123072,0,0,0,,,,
+100_100r,0,0.03326,100,100,257,301,1,10002,1,100,1,257,257,1,483872,0,0,0,,,,The attached grade_log.csv should be viewed as a spreadsheet.
+100_100v,0,0.01721,100,105,5248,5249,1,10502,1,105,1,5248,5248,1,507872,0,0,0,,,,The first column contains the names of the test cases.  The remaining columns
+100_100h,0,0.01706,100,100,4951,5149,1,10002,1,100,1,4951,4951,1,483872,0,0,0,,,,are as follows:
+250_250r,0,0.11684,250,250,667,738,1,62502,1,250,1,667,667,1,3006272,0,0,0,,,,
+250_250v,0,0.06547,250,253,31624,31625,1,63252,1,253,1,31624,31624,1,3042272,0,0,0,,,,timeout: 0 if your program completed its execution within the time limit
+250_250h,0,0.06519,250,250,31126,31624,1,62502,1,250,1,31126,31126,1,3006272,0,0,0,,,,         1 otherwise
+500_500r,0,0.56688,500,500,1366,1446,1,250002,1,500,1,1366,1366,1,12010272,0,0,0,,,,
+500_500v,0,1.87105,500,505,6152,39086,1,252502,1,503,1,33094,33094,1,12130272,0,0,0,,,,time(sec): the actual runtime of your program if it completed the test case
+500_500h,0,0.26609,500,500,124751,125749,1,250002,1,0,1,59709,2147483647,0,12010272,0,0,0,,,,           within the time limit
+750_750r,0,2.27182,750,750,2033,2165,1,562502,1,750,1,2033,2033,1,27014272,0,0,0,,,,           -1 otherwise
+750_750v,1,-1,750,753,15350,48306,1,564752,-1,0,-1,2147483647,2147483647,0,-1,-1,-1,-1,,,,
+750_750h,0,0.968,750,750,280876,282374,1,562502,1,0,1,19962,2147483647,0,27014272,0,0,0,,,,nrows: the number of rows in example
+1000_1000r,0,5.28038,1000,1000,2709,2842,1,1000002,1,1000,1,2709,2709,1,48018272,0,0,0,,,,
+1000_1000v,1,-1,1000,1005,6592,40558,1,1005002,-1,0,-1,2147483647,2147483647,0,-1,-1,-1,-1,,,,ncols: the number of cols in example
+1000_1000h,0,2.12119,1000,1000,499501,501499,1,1000002,1,0,1,44549,2147483647,0,48018272,0,0,0,,,,
+,,,,,,,,,,,,,,,,,,,,,,min time: the smallest fastest time among the ncols entries
+pa5 main (for your info only),,,,,,,,,,,,,,,,,,,,,,
+cases,timeout,wrong answer,Used memory (bytes),Stack overflow,Memory leak,Memory error,,,,,,,,,,,,,,,,max time: the largest fastest time among the ncols entries
+Invalid input filename test,-1,wrong return code,-1,-1,-1,-1,,,,,,,,,,,,,,,,
+Invalid output filename test,-1,wrong return code,-1,-1,-1,-1,,,,,,,,,,,,,,,,"table file: -1, cannot be opened (output 1)"
+Too few arguments test,-1,wrong return code,-1,-1,-1,-1,,,,,,,,,,,,,,,,"             0, can be opened but wrong format (based on the example)"
+Too many arguments test,0,wrong return code,-1,-1,-1,-1,,,,,,,,,,,,,,,,"             1, can be opened and correct format (based on the example)"
+,,,,,,,,,,,,,,,,,,,,,,"                Even if the format is correct for a 3*4 table,"
+,,,,,,,,,,,,,,,,,,,,,,"                if the input is a 30*40 table, it will report the format to be"
+,,,,,,,,,,,,,,,,,,,,,,                incorrect
+,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,valid table entries: The number of entries that match the example (should
+,,,,,,,,,,,,,,,,,,,,,,"                     be (nrows * ncols + 2), 2 entries to specifies the nrows"
+,,,,,,,,,,,,,,,,,,,,,,"                     ncols, and the others to fill the table"
+,,,,,,,,,,,,,,,,,,,,,,                     0 if table file cannot be opened
+,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,"time file: -1, cannot be opened (output 2)"
+,,,,,,,,,,,,,,,,,,,,,,"            0, can be opened but wrong format"
+,,,,,,,,,,,,,,,,,,,,,,"            1, can be opened and correct format"
+,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,valid times: The number of entries that are correct (should be ncols)
+,,,,,,,,,,,,,,,,,,,,,,             0 if time file cannot be opened
+,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,"path file: -1, cannot be opened (output 3)"
+,,,,,,,,,,,,,,,,,,,,,,"            0, can be opened but wrong format"
+,,,,,,,,,,,,,,,,,,,,,,"            1, can be opened and correct format"
+,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,reported time: the fastest time reported by student (INT_MAX if path file not
+,,,,,,,,,,,,,,,,,,,,,,               present)
+,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,evaluated time: the fastest time evaluated by the grading script based on
+,,,,,,,,,,,,,,,,,,,,,,                the path in the path file (INT_MAX if invalid path)
+,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,"a fastest path: 1 if it is a fastest path (not necessary the min fastest path,"
+,,,,,,,,,,,,,,,,,,,,,,"                for that, you have to compare the evaluated time and the"
+,,,,,,,,,,,,,,,,,,,,,,                min time)
+,,,,,,,,,,,,,,,,,,,,,,                0 otherwise
+,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,Used memory (bytes): amount of memory used by your program
+,,,,,,,,,,,,,,,,,,,,,,"                     -1 when your program timed out, seg fault or stack overflow"
+,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,Stack overflow: 0 if no overflow
+,,,,,,,,,,,,,,,,,,,,,,"                non-zero (timed out, segmentation fault, or actual overflow)"
+,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,Memory leak: 0 if no memory leak
+,,,,,,,,,,,,,,,,,,,,,,             non-zero (timed out or actual memory leak)
+,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,Memory error: 0 if no memory error
+,,,,,,,,,,,,,,,,,,,,,,             non-zero (timed out or actual memory error)

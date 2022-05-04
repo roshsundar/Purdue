@@ -1,0 +1,87 @@
+pa4 evaluation,,,,,,,,,,,,,,,,,,
+cases,timeout,time(sec),rect count,node count,reroot count,non reroot count,left right valid,right left valid,reroot valid,non reroot valid,Used memory (bytes),Stack overflow,Memory leak,Memory error,,,,The evaluation script was able to compile your submission into the
+8.po,0,0.01729,8,15,12,3,15,15,12,3,4280,0,0,0,,,,executable pa4.
+50.po,0,0.01719,50,99,96,3,99,99,96,3,12344,0,0,0,,,,
+100.po,0,0.01742,100,199,196,3,199,199,196,3,21944,0,0,0,,,,"If there is an attachment CE_log.txt, it means that there were warning"
+500.po,0,0.01705,500,999,996,3,999,999,996,3,98744,0,0,0,,,,messages from the compiler.  You should pay attention to all the warning
+1K.po,0,0.01707,1000,1999,1996,3,1999,1999,1996,3,194744,0,0,0,,,,messages to make sure that it is indeed your intention to program in such a
+5K.po,0,0.03314,5000,9999,9996,3,9999,9999,9996,3,962744,0,0,0,,,,way that you have these warnings.   If your work does not work as intended
+10K.po,0,0.06568,10000,19999,19996,3,19999,19999,19996,3,1922744,0,0,0,,,,"(see the feedback included in the attached grade_log.csv), fixing these"
+50K.po,0,0.16578,50000,99999,99996,3,99999,99999,99996,3,9602744,0,0,0,,,,warnings may sometimes eliminate these unpredictable behaviors.
+100K.po,0,0.26611,100000,199999,199996,3,199999,199999,199996,3,19202744,0,0,0,,,,
+500K.po,0,1.36936,500000,999999,999996,3,999999,999999,999996,3,96002744,0,0,0,,,,The attached grade_log.csv should be viewed as a spreadsheet.
+1M.po,0,2.6232,1000000,1999999,1999996,3,1999999,1999999,1999996,3,192002744,0,0,0,,,,The grading is based on the first set of feedback.
+,,,,,,,,,,,,,,,,,,"The second set, which investigates how your main function"
+pa4 main (for your info only),,,,,,,,,,,,,,,,,,"handles different scenarios that should have it return EXIT_FAILURE,"
+cases,timeout,wrong answer,Used memory (bytes),Stack overflow,Memory leak,Memory error,,,,,,,,,,,,is for-you-information only. 
+Invalid input filename test,0,0,568,0,0,0,,,,,,,,,,,,
+Invalid output filename test,-1,wrong return code,-1,-1,-1,-1,,,,,,,,,,,,"In the first set and second set, the first column contains the names"
+Too few arguments test,-1,wrong return code,-1,-1,-1,-1,,,,,,,,,,,,of the test cases.  The remaining columns are as follows:
+Too many arguments test,0,wrong return code,-1,-1,-1,-1,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,timeout: 0 if your program completed its execution within the time limit
+,,,,,,,,,,,,,,,,,,         1 otherwise
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,time(sec): the runtime of your program if it is a positive number
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,rect count: the number of rectangles in the input files
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,node count: the number of nodes in the input files
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,reroot count: the number of re-rooted trees
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,non reroot count: the number of nodes in the original tree that could
+,,,,,,,,,,,,,,,,,,"                  not contribute to a re-rooted tree (the root node,"
+,,,,,,,,,,,,,,,,,,                  and the left and right child nodes of the root node if
+,,,,,,,,,,,,,,,,,,                  the root node is not a leaf node)
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,left right valid: -1: first output file not present
+,,,,,,,,,,,,,,,,,,"                number of valid lines in the output file, should match"
+,,,,,,,,,,,,,,,,,,                node count if the first output file is correct
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,right left valid: -1: second output file not present
+,,,,,,,,,,,,,,,,,,"                number of valid lines in the output file, should match"
+,,,,,,,,,,,,,,,,,,                node count if the second output file is correct
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,reroot valid: -1: third output file not present
+,,,,,,,,,,,,,,,,,,"                number of valid lines in the output file, should match"
+,,,,,,,,,,,,,,,,,,                reroot count if the third output file is correct
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,non reroot valid: -1: third output file not present
+,,,,,,,,,,,,,,,,,,"                number of valid lines in the output file, should match"
+,,,,,,,,,,,,,,,,,,                non reroot count if the third output file is correct
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,Used memory (bytes): amount of memory used by your program
+,,,,,,,,,,,,,,,,,,"                     -1 when your program timed out, seg fault or stack overflow"
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,Stack overflow: 0 if no overflow
+,,,,,,,,,,,,,,,,,,"                non-zero (timed out, segmentation fault, or actual overflow)"
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,Memory leak: 0 if no memory leak
+,,,,,,,,,,,,,,,,,,             non-zero (timed out or actual memory leak)
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,Memory error: 0 if no memory error
+,,,,,,,,,,,,,,,,,,             non-zero (timed out or actual memory error)
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,The second set investigates how the main function
+,,,,,,,,,,,,,,,,,,"handles (1) an invalid input filename (the file does not exist),"
+,,,,,,,,,,,,,,,,,,"(2) an output filename that cannot be written into, (3) fewer than"
+,,,,,,,,,,,,,,,,,,"expected number of arguments, and (4) more than expected number of arguments. "
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,timeout: 0 if your program completed its execution within the time limit
+,,,,,,,,,,,,,,,,,,         1 otherwise
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,wrong answer: 0 means returns the correct status
+,,,,,,,,,,,,,,,,,,              other values mean the main function did not handle the testing
+,,,,,,,,,,,,,,,,,,              properly
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,Used memory (bytes): amount of memory used by your program
+,,,,,,,,,,,,,,,,,,"                     -1 when your program timed out, seg fault, or stack overflow"
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,Stack overflow: 0 if no overflow
+,,,,,,,,,,,,,,,,,,"                non-zero (timed out, segmentation fault, or actual overflow)"
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,Memory leak: 0 if no memory leak
+,,,,,,,,,,,,,,,,,,             non-zero (timed out or actual memory leak)
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,Memory error: 0 if no memory error
+,,,,,,,,,,,,,,,,,,             non-zero (timed out or actual memory error)

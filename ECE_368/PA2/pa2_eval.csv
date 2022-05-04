@@ -1,0 +1,115 @@
+pa2 evaluation,,,,,,,,,,,,,,,,,,,,,,,,
+cases,timeout,time(sec),distinct char,num char,tree file,tree diff,decoded file,decoded diff,count file,count diff,htree file,valid htree,opt htree,eval file,eval diff,golden diff,Used memory (bytes),Stack overflow,Memory leak,Memory error,,,,
+test0,0,0.01709,8,13,1,0,1,0,1,0,1,1,1,1,0,0,15624,0,0,0,,,,The evaluation script was able to compile your submission into the
+test1,0,-1,1,1000,1,0,-1,1000,-1,256,-1,0,0,-1,4,4,-1,1,-1,-1,,,,executable pa2.
+test2,0,0.01698,255,25170,1,0,1,0,1,0,1,1,1,1,0,0,70952,0,0,0,,,,
+test3,0,0.01708,254,20457,1,0,1,0,1,0,1,1,1,1,0,0,70728,0,0,0,,,,"If there is an attachment CE_log.txt, it means that there were warning"
+test4,0,-1,0,0,1,0,1,0,1,0,1,1,1,-1,4,4,-1,1,-1,-1,,,,messages from the compiler.  You should pay attention to all the warning
+test5,0,0.16593,107,2191332,1,0,1,0,1,0,1,1,1,1,0,0,37800,0,0,2199634,,,,messages to make sure that it is indeed your intention to program in such a
+test6,0,0.01709,33,804,1,0,1,0,1,0,1,1,1,1,0,0,21224,0,0,0,,,,way that you have these warnings.   If your work does not work as intended
+test7,0,0.01701,13,4096,1,0,1,0,1,0,1,1,1,1,0,0,16744,0,0,0,,,,"(see the feedback included in the attached grade_log.csv), fixing these"
+test8,0,0.01716,8,31,1,0,1,0,1,0,1,1,1,1,0,0,15624,0,0,0,,,,warnings may sometimes eliminate these unpredictable behaviors.
+test9,0,0.01708,24,130,1,0,1,0,1,0,1,1,1,1,0,0,19208,0,0,0,,,,
+test10,0,0.01744,8,13,1,0,1,0,1,0,1,1,1,1,0,0,15624,0,0,0,,,,The attached grade_log.csv should be viewed as a spreadsheet.  There are
+test11,0,0.01696,255,25170,1,0,1,0,1,0,1,1,1,1,0,0,70952,0,0,0,,,,two sets of evaluation. 
+test12,0,0.01714,254,20457,1,0,1,0,1,0,1,1,1,1,0,0,70728,0,0,0,,,,
+test13,0,0.11597,107,2191332,1,0,1,0,1,0,1,1,1,1,0,0,37800,0,0,2199634,,,,The first is to evaluate pa2 when all proper arguments are presented to the
+test14,0,0.01696,33,804,1,0,1,0,1,0,1,1,1,1,0,0,21224,0,0,0,,,,executable.  It evaluates the correctness of the output files produced by pa2.
+test15,0,0.01723,13,4096,1,0,1,0,1,0,1,1,1,1,0,0,16744,0,0,0,,,,
+test16,0,0.01739,8,31,1,0,1,0,1,0,1,1,1,1,0,0,15624,0,0,0,,,,The first column contains the names of the test cases.  The remaining
+test17,0,0.01737,24,130,1,0,1,0,1,0,1,1,1,1,0,0,19208,0,0,0,,,,columns are as follows:
+,,,,,,,,,,,,,,,,,,,,,,,,
+pa2 main,,,,,,,,,,,,,,,,,,,,,,,,timeout: 0 if your program completed its execution within the time limit
+cases,timeout,wrong answer,Used memory (bytes),Stack overflow,Memory leak,Memory error,,,,,,,,,,,,,,,,,,         1 otherwise
+Invalid input filename test,0,0,568,0,0,0,,,,,,,,,,,,,,,,,,
+Invalid output filename test,0,0,11136,0,10000,0,,,,,,,,,,,,,,,,,,time(sec): the run time of your program
+Too few arguments test,0,0,0,0,0,0,,,,,,,,,,,,,,,,,,
+Too many arguments test,0,0,0,0,0,0,,,,,,,,,,,,,,,,,,distinct char: the number of distinct characters in a correctly decoded file
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,num char: the number of characters in a correctly decoded file
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,"tree file: valid tree file format, -1: file not present"
+,,,,,,,,,,,,,,,,,,,,,,,,                                    0: format invalid
+,,,,,,,,,,,,,,,,,,,,,,,,                                    1: valid file
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,tree diff: the number of characters in the tree file that do not match
+,,,,,,,,,,,,,,,,,,,,,,,,"           the expected output, 0 is good"
+,,,,,,,,,,,,,,,,,,,,,,,,"           maximum is typically 3*dist_char - 1, but if the student outputs"
+,,,,,,,,,,,,,,,,,,,,,,,,"           a much larger tree file, could be higher than that."
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,decoded file: -1: file not present
+,,,,,,,,,,,,,,,,,,,,,,,,           0: the compressed file has issue (should not happen)
+,,,,,,,,,,,,,,,,,,,,,,,,           1: decoded file present
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,decoded diff: the number of characters in the decoded file that do not match
+,,,,,,,,,,,,,,,,,,,,,,,,"          the expected output, 0 is good"
+,,,,,,,,,,,,,,,,,,,,,,,,"          maximum is typically num_char, but if the student outputs"
+,,,,,,,,,,,,,,,,,,,,,,,,"          a much larger decoded file, could be higher than that."
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,"count file: valid count file format, -1: file not present"
+,,,,,,,,,,,,,,,,,,,,,,,,                                      0: format invalid
+,,,,,,,,,,,,,,,,,,,,,,,,                                      1: valid file
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,"count diff: number of different counts, 0 is good"
+,,,,,,,,,,,,,,,,,,,,,,,,            maximum is 256.
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,"htree file: valid huffman tree file format, -1: file not present"
+,,,,,,,,,,,,,,,,,,,,,,,,                                             0: format invalid
+,,,,,,,,,,,,,,,,,,,,,,,,                                             1: valid file
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,valid htree: contains all distinct characters in decoded file: 1;
+,,,,,,,,,,,,,,,,,,,,,,,,             0 otherwise
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,opt htree: a tree optimally built for Huffman coding: 1;
+,,,,,,,,,,,,,,,,,,,,,,,,           0 otherwise
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,"eval file: valid eval file format, -1: file not present"
+,,,,,,,,,,,,,,,,,,,,,,,,                                    0: format invalid
+,,,,,,,,,,,,,,,,,,,,,,,,                                    1: valid file
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,eval diff: the number of differences in the eval file vs the expected one
+,,,,,,,,,,,,,,,,,,,,,,,,"           (based on the input encoded file and ""Huffman"" tree provided by"
+,,,,,,,,,,,,,,,,,,,,,,,,"            the student), 0 is good"
+,,,,,,,,,,,,,,,,,,,,,,,,"           maximum is 4, because there are four numbers in an eval file"
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,golden diff: the number of differences in the eval file vs the golden solution
+,,,,,,,,,,,,,,,,,,,,,,,,           (based on the input encoded file and an optimal Huffman tree
+,,,,,,,,,,,,,,,,,,,,,,,,"            encoding), 0 is good"
+,,,,,,,,,,,,,,,,,,,,,,,,"           maximum is 4, because there are four numbers in an eval file"
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,Used memory (bytes): amount of memory used by your program
+,,,,,,,,,,,,,,,,,,,,,,,,"                     -1 when your program timed out, seg fault, or stack overflow"
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,Stack overflow: 0 if no overflow
+,,,,,,,,,,,,,,,,,,,,,,,,"                non-zero (timed out, segmentation fault, or actual overflow)"
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,Memory leak: 0 if no memory leak
+,,,,,,,,,,,,,,,,,,,,,,,,             non-zero (timed out or actual memory leak)
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,Memory error: 0 if no memory error
+,,,,,,,,,,,,,,,,,,,,,,,,             non-zero (timed out or actual memory error)
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,The second set evaluates how the main function of pa2 handle
+,,,,,,,,,,,,,,,,,,,,,,,,"processing of arguments.  In particular, it checks how your main function"
+,,,,,,,,,,,,,,,,,,,,,,,,"handles (1) an invalid input filename (the file does not exist),"
+,,,,,,,,,,,,,,,,,,,,,,,,"(2) an output filename that cannot be written into, (3) fewer than"
+,,,,,,,,,,,,,,,,,,,,,,,,"expected number of arguments, and (4) more than expected number of arguments. "
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,timeout: 0 if your program completed its execution within the time limit
+,,,,,,,,,,,,,,,,,,,,,,,,         1 otherwise
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,wrong answer: 0 means returns the correct status
+,,,,,,,,,,,,,,,,,,,,,,,,              other values mean the main function did not handle the testing
+,,,,,,,,,,,,,,,,,,,,,,,,              properly
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,Used memory (bytes): amount of memory used by your program
+,,,,,,,,,,,,,,,,,,,,,,,,"                     -1 when your program timed out, seg fault, or stack overflow"
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,Stack overflow: 0 if no overflow
+,,,,,,,,,,,,,,,,,,,,,,,,"                non-zero (timed out, segmentation fault, or actual overflow)"
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,Memory leak: 0 if no memory leak
+,,,,,,,,,,,,,,,,,,,,,,,,             non-zero (timed out or actual memory leak)
+,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,Memory error: 0 if no memory error
+,,,,,,,,,,,,,,,,,,,,,,,,              non-zero (timed out or actual memory error)
