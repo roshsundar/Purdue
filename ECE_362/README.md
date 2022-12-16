@@ -6,6 +6,8 @@ A typical folder in this repository is equivalent to a lab in the course, and us
 - a main file that contains code written by me, either main.s (if assembly) or main.c (if C)
 - many peripheral files that contain project data, setup, code headers, etc. These were provided by the instructor
 
+Reference manuals for STM32 are STM32F091xBC.pdf and STM32F0x1_Family_Reference.pdf
+
 A rough summary is given below for each lab, see the appropriate .html readme for details:
 - Lab 0.2 (/Lab0.2): Environment setup
 - Lab 1 (/f2022-lab-1-main): Intro to assembly
