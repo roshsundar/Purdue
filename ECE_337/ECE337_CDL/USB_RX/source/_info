@@ -1,0 +1,226 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/ecegrid/a/mg75/Temp/source
+vedge_detect
+Z1 DXx6 sv_std 3 std 0 22 >9az<^>2ff9DAl3OFGaAf1
+!s110 1682610995
+!i10b 1
+!s100 [hjjBbl2ZLEb_a0FU81691
+I@J?;BbBVKSGRHPQ;QNJ@Z2
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+!s105 edge_detect_sv_unit
+S1
+R0
+w1681771953
+8/home/ecegrid/a/mg75/Temp/source/edge_detect.sv
+F/home/ecegrid/a/mg75/Temp/source/edge_detect.sv
+L0 9
+Z3 OE;L;10.7a;67
+r1
+!s85 0
+31
+!s108 1682610994.000000
+!s107 /home/ecegrid/a/mg75/Temp/source/edge_detect.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/Temp/source/edge_detect.sv|
+!i113 0
+Z4 o-nologo -work source -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z5 tCvgOpt 0
+vflex_counter
+R1
+!s110 1682550240
+!i10b 1
+!s100 F@QD^f@4;;f03EXJ4V_`Z2
+I6d7IdGTdHI[i3RXONk0mH0
+R2
+!s105 flex_counter_sv_unit
+S1
+R0
+w1676586889
+8/home/ecegrid/a/mg75/Temp/source/flex_counter.sv
+F/home/ecegrid/a/mg75/Temp/source/flex_counter.sv
+L0 8
+R3
+r1
+!s85 0
+31
+!s108 1682550240.000000
+!s107 /home/ecegrid/a/mg75/Temp/source/flex_counter.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/Temp/source/flex_counter.sv|
+!i113 0
+R4
+R5
+vrcu
+R1
+!s110 1682622814
+!i10b 1
+!s100 UXKf1b6=[jLSi9:CfZC>=1
+IAN[Ulb_MDVJ4af>QX[8:d3
+R2
+!s105 rcu_sv_unit
+S1
+R0
+w1682622814
+8/home/ecegrid/a/mg75/Temp/source/rcu.sv
+F/home/ecegrid/a/mg75/Temp/source/rcu.sv
+L0 9
+R3
+r1
+!s85 0
+31
+!s108 1682622814.000000
+!s107 /home/ecegrid/a/mg75/Temp/source/rcu.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/Temp/source/rcu.sv|
+!i113 0
+R4
+R5
+vsr_8bit
+R1
+!s110 1682602911
+!i10b 1
+!s100 Yg<0llnn_c645gGVW[>jm3
+I<VXF[fXkeBOGC92Lfa`a<1
+R2
+!s105 sr_8bit_sv_unit
+S1
+R0
+w1682553301
+8/home/ecegrid/a/mg75/Temp/source/sr_8bit.sv
+F/home/ecegrid/a/mg75/Temp/source/sr_8bit.sv
+L0 9
+R3
+r1
+!s85 0
+31
+!s108 1682602910.000000
+!s107 /home/ecegrid/a/mg75/Temp/source/sr_8bit.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/Temp/source/sr_8bit.sv|
+!i113 0
+R4
+R5
+vsync_high
+R1
+!s110 1682551163
+!i10b 1
+!s100 oQQaU;f`ZR<n_ANSj[giP1
+IO`naF<[PoKKXWzj`bE[h`0
+R2
+!s105 sync_high_sv_unit
+S1
+R0
+w1675379228
+8/home/ecegrid/a/mg75/Temp/source/sync_high.sv
+F/home/ecegrid/a/mg75/Temp/source/sync_high.sv
+L0 8
+R3
+r1
+!s85 0
+31
+!s108 1682551163.000000
+!s107 /home/ecegrid/a/mg75/Temp/source/sync_high.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/Temp/source/sync_high.sv|
+!i113 0
+R4
+R5
+vtb_usb_rx
+R1
+!s110 1682637411
+!i10b 1
+!s100 H;Ci>Te[^Ic[;dbT_ToNk0
+IfoXB7mmzcCeM<=3MIDH@U0
+R2
+!s105 tb_usb_rx_sv_unit
+S1
+R0
+w1682626506
+8/home/ecegrid/a/mg75/Temp/source/tb_usb_rx.sv
+F/home/ecegrid/a/mg75/Temp/source/tb_usb_rx.sv
+L0 11
+R3
+r1
+!s85 0
+31
+!s108 1682637411.000000
+!s107 /home/ecegrid/a/mg75/Temp/source/tb_usb_rx.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/Temp/source/tb_usb_rx.sv|
+!i113 0
+R4
+R5
+vtimer
+R1
+!s110 1682619754
+!i10b 1
+!s100 eUZ^R<ADhA790Kh@CmQH:3
+InE;?hcL@YBCQ^7M>]7z[81
+R2
+!s105 timer_sv_unit
+S1
+R0
+w1682607209
+8/home/ecegrid/a/mg75/Temp/source/timer.sv
+F/home/ecegrid/a/mg75/Temp/source/timer.sv
+L0 9
+R3
+r1
+!s85 0
+31
+!s108 1682619753.000000
+!s107 /home/ecegrid/a/mg75/Temp/source/timer.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/Temp/source/timer.sv|
+!i113 0
+R4
+R5
+vtwentyfive_counter
+R1
+!s110 1682622305
+!i10b 1
+!s100 NRP6^e:i]ln_1SC8klmRY3
+IYM2VZU^k[l33Jl?9NboFY1
+R2
+!s105 twentyfive_counter_sv_unit
+S1
+R0
+w1682607062
+8/home/ecegrid/a/mg75/Temp/source/twentyfive_counter.sv
+F/home/ecegrid/a/mg75/Temp/source/twentyfive_counter.sv
+L0 8
+R3
+r1
+!s85 0
+31
+!s108 1682622305.000000
+!s107 /home/ecegrid/a/mg75/Temp/source/twentyfive_counter.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/Temp/source/twentyfive_counter.sv|
+!i113 0
+R4
+R5
+vusb_rx
+R1
+!s110 1682622534
+!i10b 1
+!s100 Po8>bM;`_55Q<?HY2l1JX0
+IkZ8[>IL0kDlV?]QlWi3EW3
+R2
+!s105 usb_rx_sv_unit
+S1
+R0
+w1682622533
+8/home/ecegrid/a/mg75/Temp/source/usb_rx.sv
+F/home/ecegrid/a/mg75/Temp/source/usb_rx.sv
+L0 9
+R3
+r1
+!s85 0
+31
+!s108 1682622533.000000
+!s107 /home/ecegrid/a/mg75/Temp/source/usb_rx.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/Temp/source/usb_rx.sv|
+!i113 0
+R4
+R5

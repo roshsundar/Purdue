@@ -1,0 +1,28 @@
+Question: Which which layers are used for the sections of the supply rings?
+	metal1, metal2
+
+Question: What are the widths of the supply ring bars and their spacing?
+	bar = 10, spacing = 10
+
+Question: What is the spacing between the inner supply ring and the core area, and which prior command
+controls this?
+	spacing = 10, supply_rings.tcl
+
+
+Question: How did the layout change after running the ’place_cells.tcl’ script?
+	core area filled
+
+Question: What is a rough estimate of the core utilization based on the cells?
+	70%
+
+Question: How did the layout change after running the ’sroute’ command?
+	cells connected to supply rings
+
+Question: In what ways are the three metal layers typically used in the routing?
+	metal1 (blue) = connects to power, gnd
+	metal2 (red) = originates at cells, connects to metal3 vertically
+	metal3 (green) = horizontally connects metal2 lines
+
+Question: What percentage of the core appears to be filled with cells after running ’final_route.tcl’? And which
+command do you think primarily resulted in the change?
+	95%. pre_cts_opt.tcl sets density

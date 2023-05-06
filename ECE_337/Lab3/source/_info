@@ -1,0 +1,81 @@
+m255
+K4
+z2
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/ecegrid/a/mg75/ece337/Lab3
+vadder_16bit
+Z1 DXx6 sv_std 3 std 0 22 >9az<^>2ff9DAl3OFGaAf1
+!s110 1674832277
+!i10b 1
+!s100 oh<MmNObTM=zQU3[=JTJ33
+IDAM_]Ilfc>7ENCi^4O@nV3
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+!s105 adder_16bit_sv_unit
+S1
+R0
+w1674832277
+8/home/ecegrid/a/mg75/ece337/Lab3/source/adder_16bit.sv
+F/home/ecegrid/a/mg75/ece337/Lab3/source/adder_16bit.sv
+L0 6
+Z3 OE;L;10.7a;67
+r1
+!s85 0
+31
+!s108 1674832277.000000
+!s107 /home/ecegrid/a/mg75/ece337/Lab3/source/adder_16bit.sv|
+!s90 -##implicit##push_minusfile_path##|/home/ecegrid/a/mg75/ece337/Lab3/vlog.opt|-##implicit##pop_minusfile_path##|-nologo|-work|source|/home/ecegrid/a/mg75/ece337/Lab3/source/adder_16bit.sv|
+!i113 0
+Z4 o-nologo -work source
+Z5 tCoverage 63 CoverExcludeDefault 1 CoverOpt 1 CoverShortCircuit 0 CvgOpt 0
+vadder_1bit
+R1
+!s110 1674831500
+!i10b 1
+!s100 VKBgi4]a:6RoR?CAf[;EJ2
+IAGPk>nb6FAo13NTL?=3ga3
+R2
+!s105 adder_1bit_sv_unit
+S1
+R0
+w1674829388
+8/home/ecegrid/a/mg75/ece337/Lab3/source/adder_1bit.sv
+F/home/ecegrid/a/mg75/ece337/Lab3/source/adder_1bit.sv
+L0 8
+R3
+r1
+!s85 0
+31
+!s108 1674831500.000000
+!s107 /home/ecegrid/a/mg75/ece337/Lab3/source/adder_1bit.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/ece337/Lab3/source/adder_1bit.sv|
+!i113 0
+R4
+R5
+vadder_nbit
+R1
+!s110 1674831597
+!i10b 1
+!s100 =iX?KPhOcG8iefizM`N5V1
+I=2A[i_?a<Jf3hBD^L0k`23
+R2
+!s105 adder_nbit_sv_unit
+S1
+R0
+w1674829963
+8/home/ecegrid/a/mg75/ece337/Lab3/source/adder_nbit.sv
+F/home/ecegrid/a/mg75/ece337/Lab3/source/adder_nbit.sv
+L0 8
+R3
+r1
+!s85 0
+31
+!s108 1674831597.000000
+!s107 /home/ecegrid/a/mg75/ece337/Lab3/source/adder_nbit.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/ece337/Lab3/source/adder_nbit.sv|
+!i113 0
+R4
+R5

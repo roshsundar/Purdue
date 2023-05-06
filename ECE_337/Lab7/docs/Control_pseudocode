@@ -1,0 +1,25 @@
+idle: if (data_ready=0) goto idle; // wait until data_ready=1
+store: if (data_ready=0) goto eidle;
+    reg[5] = data; // Store data in a register
+    err = 0; // reset error
+zero: reg[0] = 0; // zero out accumulator
+shift1: reg[1] = reg[2]; // Reorder registers
+shift2: reg[2] = reg[3]; // Reorder registers
+shift3: reg[3] = reg[4];
+shift4: reg[4] = reg[5];
+mul1: reg[6] = reg[1] * reg[7]; // sample4 * F3
+add: reg[0] = reg[0] + reg[6]; // add Large pos. coefficient
+    if (V) goto eidle; // On overflow, err condition
+mul2: reg[6] = reg[2] * reg[8]; // sample3 * F2
+sub: reg[0] = reg[0] - reg[6]; // sub Large neg. coefficient
+    if (V) goto eidle; // On overflow, err condition
+mul3: reg[6] = reg[3] * reg[9]; // sample2 * F1
+add: reg[0] = reg[0] + reg[6]; // add Large pos. coefficient
+    if (V) goto eidle; // On overflow, err condition
+mul4: reg[6] = reg[4] * reg[10]; // sample1 * F0
+sub: reg[0] = reg[0] - reg[6]; // sub Large neg. coefficient
+    if (V) goto eidle; // On overflow, err condition
+    else goto idle;
+eidle: err = 1;
+    if (data_ready=1) goto store; // wait until data_ready=1
+    if (data_ready=0) goto eidle;

@@ -1,0 +1,23 @@
+Question: What is the minimum amount of time that data_ready must remain asserted to ensure correct oper-
+ation? What is the minimum amount of time, in clock cycles, that data must remain valid after data_ready is
+asserted in order to ensure correct operation? (You may assume that all setup and hold times, as well as any
+propagation delays, are negligible.)
+
+	data_ready needs to be asserted for 2 clks. data must be valid for 3 clk after data_ready.
+
+Question: How are the image files different? Does this make sense given the filter design built in the lab? Why
+or why not?
+	
+	The filtered image seems to detect edges/contrast. This makes sense given the math of the filter which calculates the 'variation'
+	between samples.
+
+Question: What is the general syntax for each of the file IO functions used in the provided test bench (tb_fir_filter_image.sv)?
+	
+	$fopen(INPUT_FILENAME, MODE);
+	$fclose(in_file);
+	$fseek(in_file, num_pad_bytes, pointer);
+	$fscanf(in_file,"%type" , dest);
+	$fwrite(res_file, "%type", source);
+
+Question: What are the different format specifiers available for use in file functions like $fscanf(. . . )?
+	%c, %d, %f, %s, %x

@@ -1,0 +1,441 @@
+m255
+K4
+z2
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/ecegrid/a/mg75/ece337/Lab6
+vadder_16
+Z1 DXx6 sv_std 3 std 0 22 >9az<^>2ff9DAl3OFGaAf1
+!s110 1676588687
+!i10b 1
+!s100 KW;i7J7nC?k_2imi]i5H03
+IQDzga<mh`=E9FNS`oO=SF1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+!s105 adder_16_sv_unit
+S1
+R0
+Z3 w1674771513
+8/home/ecegrid/a/mg75/ece337/Lab3/source/adder_16.sv
+F/home/ecegrid/a/mg75/ece337/Lab3/source/adder_16.sv
+L0 7
+Z4 OE;L;10.7a;67
+r1
+!s85 0
+31
+!s108 1676588687.000000
+!s107 /home/ecegrid/a/mg75/ece337/Lab3/source/adder_16.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/ece337/Lab3/source/adder_16.sv|
+!i113 0
+Z5 o-nologo -work source
+Z6 tCoverage 63 CoverExcludeDefault 1 CoverOpt 1 CoverShortCircuit 0 CvgOpt 0
+vadder_nbit
+R1
+!s110 1676588628
+!i10b 1
+!s100 8Km=U??M2MD:NO1^meof71
+IA:0`lNODC@?`X1B`UY:_i3
+R2
+!s105 adder_nbit_sv_unit
+S1
+R0
+w1674832603
+8/home/ecegrid/a/mg75/ece337/Lab3/source/adder_nbit.sv
+F/home/ecegrid/a/mg75/ece337/Lab3/source/adder_nbit.sv
+L0 8
+R4
+r1
+!s85 0
+31
+!s108 1676588628.000000
+!s107 /home/ecegrid/a/mg75/ece337/Lab3/source/adder_nbit.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/ece337/Lab3/source/adder_nbit.sv|
+!i113 0
+R5
+R6
+vflex_counter
+R1
+!s110 1676939262
+!i10b 1
+!s100 F@QD^f@4;;f03EXJ4V_`Z2
+I7DzFA<:aeFlG?4fURhhm80
+R2
+!s105 flex_counter_sv_unit
+S1
+R0
+Z7 w1676586889
+8/home/ecegrid/a/mg75/ece337/Lab6/source/flex_counter.sv
+F/home/ecegrid/a/mg75/ece337/Lab6/source/flex_counter.sv
+L0 8
+R4
+r1
+!s85 0
+31
+!s108 1676939262.000000
+!s107 /home/ecegrid/a/mg75/ece337/Lab6/source/flex_counter.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/ece337/Lab6/source/flex_counter.sv|
+!i113 0
+R5
+R6
+vflex_stp_sr
+R1
+!s110 1676941122
+!i10b 1
+!s100 UG0MgEa>LCIT3XSYCM=KB1
+Ie=ZKl?VcD6cRD9i@CzFXm3
+R2
+!s105 flex_stp_sr_sv_unit
+S1
+R0
+R7
+8/home/ecegrid/a/mg75/ece337/Lab6/source/flex_stp_sr.sv
+F/home/ecegrid/a/mg75/ece337/Lab6/source/flex_stp_sr.sv
+L0 9
+R4
+r1
+!s85 0
+31
+!s108 1676941121.000000
+!s107 /home/ecegrid/a/mg75/ece337/Lab6/source/flex_stp_sr.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/ece337/Lab6/source/flex_stp_sr.sv|
+!i113 0
+R5
+R6
+vmoore
+R1
+!s110 1676932738
+!i10b 1
+!s100 o>jG^m_5D>4[BEHWE1h>m2
+ILJfelA@3f@l?bGT?bH3V23
+R2
+!s105 moore_sv_unit
+S1
+R0
+w1676509585
+8/home/ecegrid/a/mg75/ece337/Lab5/source/moore.sv
+F/home/ecegrid/a/mg75/ece337/Lab5/source/moore.sv
+L0 8
+R4
+r1
+!s85 0
+31
+!s108 1676932738.000000
+!s107 /home/ecegrid/a/mg75/ece337/Lab5/source/moore.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/ece337/Lab5/source/moore.sv|
+!i113 0
+R5
+R6
+vrcu
+R1
+!s110 1676940469
+!i10b 1
+!s100 P<iI?8FBD]ENgVk5:5cNY1
+Ib6<@GCS^[j96ee4Y?WYPR0
+R2
+!s105 rcu_sv_unit
+S1
+R0
+w1676935551
+8/home/ecegrid/a/mg75/ece337/Lab6/source/rcu.sv
+F/home/ecegrid/a/mg75/ece337/Lab6/source/rcu.sv
+L0 9
+R4
+r1
+!s85 0
+31
+!s108 1676940469.000000
+!s107 /home/ecegrid/a/mg75/ece337/Lab6/source/rcu.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/ece337/Lab6/source/rcu.sv|
+!i113 0
+R5
+R6
+vrcv_block
+R1
+!s110 1676938291
+!i10b 1
+!s100 X]ImES6QBjBWgjNKROC5C3
+I[WKTB`I:@Olk]<H=;T:B>2
+R2
+!s105 rcv_block_sv_unit
+S1
+R0
+w1676938291
+8/home/ecegrid/a/mg75/ece337/Lab6/source/rcv_block.sv
+F/home/ecegrid/a/mg75/ece337/Lab6/source/rcv_block.sv
+L0 9
+R4
+r1
+!s85 0
+31
+!s108 1676938291.000000
+!s107 /home/ecegrid/a/mg75/ece337/Lab6/source/rcv_block.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/ece337/Lab6/source/rcv_block.sv|
+!i113 0
+R5
+R6
+vrx_data_buff
+R1
+!s110 1676938093
+!i10b 1
+!s100 zd[Xl=<QGo;T2]81OhFE40
+IE4X8c@SXa1?2kg13dfF7N2
+R2
+!s105 rx_data_buff_sv_unit
+S1
+R0
+Z8 w1676586890
+8/home/ecegrid/a/mg75/ece337/Lab6/source/rx_data_buff.sv
+F/home/ecegrid/a/mg75/ece337/Lab6/source/rx_data_buff.sv
+Z9 L0 11
+R4
+r1
+!s85 0
+31
+!s108 1676938093.000000
+!s107 /home/ecegrid/a/mg75/ece337/Lab6/source/rx_data_buff.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/ece337/Lab6/source/rx_data_buff.sv|
+!i113 0
+R5
+R6
+vsr_9bit
+R1
+!s110 1676941134
+!i10b 1
+!s100 XPkW5`EX=D6ihjFO:lVfd1
+IejFh5jQ5l@;d@P]jo3MTQ3
+R2
+!s105 sr_9bit_sv_unit
+S1
+R0
+w1676941134
+8/home/ecegrid/a/mg75/ece337/Lab6/source/sr_9bit.sv
+F/home/ecegrid/a/mg75/ece337/Lab6/source/sr_9bit.sv
+L0 9
+R4
+r1
+!s85 0
+31
+!s108 1676941134.000000
+!s107 /home/ecegrid/a/mg75/ece337/Lab6/source/sr_9bit.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/ece337/Lab6/source/sr_9bit.sv|
+!i113 0
+R5
+R6
+vstart_bit_det
+R1
+!s110 1676936878
+!i10b 1
+!s100 NJzlim@8<[X?g2A<jiz>90
+I31b<]TNljfcWgg=CW`:aX2
+R2
+!s105 start_bit_det_sv_unit
+S1
+R0
+R8
+8/home/ecegrid/a/mg75/ece337/Lab6/source/start_bit_det.sv
+F/home/ecegrid/a/mg75/ece337/Lab6/source/start_bit_det.sv
+R9
+R4
+r1
+!s85 0
+31
+!s108 1676936878.000000
+!s107 /home/ecegrid/a/mg75/ece337/Lab6/source/start_bit_det.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/ece337/Lab6/source/start_bit_det.sv|
+!i113 0
+R5
+R6
+vstop_bit_chk
+R1
+!s110 1676937903
+!i10b 1
+!s100 PAnA2V^AJ8oOP^aUSRgnl1
+IbOAck1@X5JQeM7QoA?fC91
+R2
+!s105 stop_bit_chk_sv_unit
+S1
+R0
+R8
+8/home/ecegrid/a/mg75/ece337/Lab6/source/stop_bit_chk.sv
+F/home/ecegrid/a/mg75/ece337/Lab6/source/stop_bit_chk.sv
+R9
+R4
+r1
+!s85 0
+31
+!s108 1676937902.000000
+!s107 /home/ecegrid/a/mg75/ece337/Lab6/source/stop_bit_chk.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/ece337/Lab6/source/stop_bit_chk.sv|
+!i113 0
+R5
+R6
+vstp_sr_4_msb
+R1
+!s110 1676939353
+!i10b 1
+!s100 cf_0mo3SGa`U=L?Va8_a<3
+I]D3cdH@i`mYgU4Ui??>3]3
+R2
+!s105 stp_sr_4_msb_sv_unit
+S1
+R0
+R8
+8/home/ecegrid/a/mg75/ece337/Lab6/source/stp_sr_4_msb.sv
+F/home/ecegrid/a/mg75/ece337/Lab6/source/stp_sr_4_msb.sv
+L0 10
+R4
+r1
+!s85 0
+31
+!s108 1676939353.000000
+!s107 /home/ecegrid/a/mg75/ece337/Lab6/source/stp_sr_4_msb.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/ece337/Lab6/source/stp_sr_4_msb.sv|
+!i113 0
+R5
+R6
+vtb_adder_nbit
+R1
+!s110 1676588913
+!i10b 1
+!s100 G`;lDgS1HF4_9QKmW_Pl03
+IZ>_GU1X<F46i3TA8mfN==1
+R2
+!s105 tb_adder_nbit_sv_unit
+S1
+R0
+R3
+8/home/ecegrid/a/mg75/ece337/Lab3/source/tb_adder_nbit.sv
+F/home/ecegrid/a/mg75/ece337/Lab3/source/tb_adder_nbit.sv
+L0 6
+R4
+r1
+!s85 0
+31
+!s108 1676588912.000000
+!s107 /home/ecegrid/a/mg75/ece337/Lab3/source/tb_adder_nbit.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/ece337/Lab3/source/tb_adder_nbit.sv|
+!i113 0
+R5
+R6
+vtb_flex_counter
+R1
+!s110 1676936507
+!i10b 1
+!s100 1Yg`MHY4L_zH@o9^1UmdH3
+IFeodeD;:;bKTL1a9FfD;^0
+R2
+!s105 tb_flex_counter_sv_unit
+S1
+R0
+R7
+8/home/ecegrid/a/mg75/ece337/Lab6/source/tb_flex_counter.sv
+F/home/ecegrid/a/mg75/ece337/Lab6/source/tb_flex_counter.sv
+R9
+R4
+r1
+!s85 0
+31
+!s108 1676936507.000000
+!s107 /home/ecegrid/a/mg75/ece337/Lab6/source/tb_flex_counter.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/ece337/Lab6/source/tb_flex_counter.sv|
+!i113 0
+R5
+R6
+vtb_moore
+R1
+!s110 1676589652
+!i10b 1
+!s100 ]_GAo_A2MfSIcfmOfSnfe3
+ITWbXYDhc2ohDLHm4N0L0b2
+R2
+!s105 tb_moore_sv_unit
+S1
+R0
+w1676511507
+8/home/ecegrid/a/mg75/ece337/Lab5/source/tb_moore.sv
+F/home/ecegrid/a/mg75/ece337/Lab5/source/tb_moore.sv
+R9
+R4
+r1
+!s85 0
+31
+!s108 1676589652.000000
+!s107 /home/ecegrid/a/mg75/ece337/Lab5/source/tb_moore.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/ece337/Lab5/source/tb_moore.sv|
+!i113 0
+R5
+R6
+vtb_rcv_block
+R1
+!s110 1676940229
+!i10b 1
+!s100 J73DQlEPZ=Nm>E05;;Uoz2
+IbZoaSTTdYkXkiAQZQQ5Qf0
+R2
+!s105 tb_rcv_block_sv_unit
+S1
+R0
+w1676940229
+8/home/ecegrid/a/mg75/ece337/Lab6/source/tb_rcv_block.sv
+F/home/ecegrid/a/mg75/ece337/Lab6/source/tb_rcv_block.sv
+R9
+R4
+r1
+!s85 0
+31
+!s108 1676940229.000000
+!s107 /home/ecegrid/a/mg75/ece337/Lab6/source/tb_rcv_block.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/ece337/Lab6/source/tb_rcv_block.sv|
+!i113 0
+R5
+R6
+vtb_stp_sr_4_msb
+R1
+!s110 1676588352
+!i10b 1
+!s100 KMnZmT]0YRlW;1KO[m3>O1
+Ill_EOD04kHz7[EL5DinU13
+R2
+!s105 tb_stp_sr_4_msb_sv_unit
+S1
+R0
+w1676042014
+8/home/ecegrid/a/mg75/ece337/Lab5/source/tb_stp_sr_4_msb.sv
+F/home/ecegrid/a/mg75/ece337/Lab5/source/tb_stp_sr_4_msb.sv
+R9
+R4
+r1
+!s85 0
+31
+!s108 1676588351.000000
+!s107 /home/ecegrid/a/mg75/ece337/Lab5/source/tb_stp_sr_4_msb.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/ece337/Lab5/source/tb_stp_sr_4_msb.sv|
+!i113 0
+R5
+R6
+vtimer
+R1
+!s110 1676939979
+!i10b 1
+!s100 jTz2dCn]:l?mh7RL58YQ32
+I3Vl]b;fOg51MOM6T?X:jL2
+R2
+!s105 timer_sv_unit
+S1
+R0
+w1676939979
+8/home/ecegrid/a/mg75/ece337/Lab6/source/timer.sv
+F/home/ecegrid/a/mg75/ece337/Lab6/source/timer.sv
+L0 9
+R4
+r1
+!s85 0
+31
+!s108 1676939979.000000
+!s107 /home/ecegrid/a/mg75/ece337/Lab6/source/timer.sv|
+!s90 -nologo|-work|source|/home/ecegrid/a/mg75/ece337/Lab6/source/timer.sv|
+!i113 0
+R5
+R6
