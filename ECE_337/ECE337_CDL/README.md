@@ -4,9 +4,9 @@ Team Members: Roshan Sundar, Harim Choe, Tristan Marta
 
 This is the GitHub repository documenting all codes used for the Purdue ECE 337 CDL.
 
-We are going to design and verify a USB Full-Speed Bulk-Transfer Endpoint AHB-Lite SoC Module. Resources such as the manual and the schedule can be found in the shared Google Drives folder. The link to the Google Drive is shown in the link below. 
+We are going to design and verify a USB Full-Speed Bulk-Transfer Endpoint AHB-Lite SoC Module. 
 
-https://drive.google.com/drive/u/1/folders/1AcbHvw19JxVb_jIq45rho2z089_tWmIi.
+Resources such as the manual and the RTL diagrams can be found in the (/Docs) folder
 
 All other SystemVerilog modules for AHB-lite Slave, USB RX, USB TX, FIFO, and the overall wrapper module can be found in this repository. Test benches for all modules except for the FIFO buffer will be present here as well. Our design is based on the RTL diagrams we made and the test benches are based on the different test cases we specified in the design documents.
 
