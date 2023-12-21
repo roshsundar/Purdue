@@ -7,7 +7,7 @@ A typical folder in this repository is equivalent to a lab in the course, and us
 - Micropython code files
 - a README.txt with some further details of implementation
 
-A rough summary is given below for each lab, see the appropriate .html readme for details:
+A rough summary is given below for each lab, see the appropriate .pdf readme for details:
 - Lab 1: Introduction to Python and Digital Input and Output using GPIOs
 - Lab 2: LED control using ADC, PWM, Timers and Interrupts
 - Lab 3: Wi-Fi Networking, Touch Pad Inputs, and Sleep/Wake-Up
