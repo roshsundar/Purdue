@@ -5,4 +5,12 @@ A typical folder in this repository is equivalent to an assignment in the course
 - Occasionally the instructions wille be in a separate .ipynb file
 
 A rough summary is given below for each lab, see the appropriate .ipynb file for details:
-- Assignment 1:
+- Assignment 1: Intro to AI through Handcrafed knowledge
+- Assignment 2: Intro to Python AI tools & PCA
+- Assignment 3: Data proceessing & KNN
+- Assignment 4: Gradient Descent
+- Assignment 5: CNN classification
+- Assignemnt 6: RNN model to predict the next character in a sequence of text data from Shakespeare's plays
+- Assignment 7: Implement and test different transformer components
+- Assignment 8: Latent Representations with KNN
+- Assignment 11: DCGAN & WGAN implementation
