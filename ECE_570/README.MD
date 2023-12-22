@@ -14,3 +14,8 @@ A rough summary is given below for each lab, see the appropriate .ipynb file for
 - Assignment 7: Implement and test different transformer components
 - Assignment 8: Latent Representations with KNN
 - Assignment 11: DCGAN & WGAN implementation
+
+The Project folder contains the final course project. The project aims to introduce the AI/ML research landscape and help you dive deeper
+into a topic of your choice (as the lecture content is necessarily narrow). The project aims to emulate the research paper publishing process including literature review, paper writing, implementation, presentation, and peer reviews. The final product is a paper that consists of 3 reviews of papers in the topic area, and one section for an implementation/extension of one or more of the papers.
+
+The Project folder contains a .pdf file of the paper, as well as .py files containing implementation code. A README is present to explain further details.
