@@ -1,0 +1,8 @@
+Exercise4 Q1:
+If all interrupts/exceptions used the same handler, it would not be guaranteed to have kernel protection.
+Some handler functions should not be invoked by the user, as that would cause interference with the normal kernel operation.
+Some should be allowed to be accessed by the user. Thus, each exception/interrupt should have its own handler in order to have appropriate privilege.
+
+Exercise4 Q2:
+The softint program behaved correctly as is. int $14 produces interrupt vector 13 because interrupt vector 14 has kernel privledge level, and cannot be invoked by a user program. 
+If the user privlege level could trigger a page fault that the kernel doesn't expect, it could cause unexpected behavior.

@@ -1,0 +1,11 @@
+Exercise2 Q1:
+MPBOOTPHYS is used to calculate the absolute load address from the link address without relying on the linker. boot.s is linked to the same address where it will load. For mpentry.s, there is a difference between these addresses accounted for by MPBOOTPHYS. Without it, mpentry.S will be loaded at the wrong address above kernbase and fail.
+
+Exercise5 Q1:
+Separate kernel stacks per CPU are necessary for trap handling, as each CPU has its own registers to push on a kernel stack, for example in the case of a hardware interrupt. If there was a shared kernel stack, the interrupted CPU would push to the kernel stack the current CPU is now using, and corrupt it.
+
+Exercise6 Q1:
+e is mapped statically above the base kernel address. The address translation is the same between page directories.
+
+Exercise6 Q2:
+The environment's old registers are saved, so when the environment is resumed it may continue execution from its stopping point. The registeres are saved in trap() through a trapframe, which will be restored in env_pop_tf().

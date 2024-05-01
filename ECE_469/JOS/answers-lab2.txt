@@ -1,0 +1,49 @@
+Exercise 3 Q1:
+x should have uintptr_t, since return_a_pointer() returns a virtual address.
+
+Exercise 5 Qa:
++-----+----------------------+-------------------------------------------+
+|Entry| Base Virtual Address |  Points to (logically)                    |
++=====+======================+===========================================+
+|1023 | 0xffc00000           | Page table for 4MB of phys memory (64)    |
++-----+----------------------+-------------------------------------------+
+|1022 | 0xff800000           | Page table for 4MB of phys memory (63)    |
++-----+----------------------+-------------------------------------------+
+|.    | .                    | .                                         |
++-----+----------------------+-------------------------------------------+
+|960  | 0xf0000000           | Page table for 4MB of phys memory (1)     |
++-----+----------------------+-------------------------------------------+
+|959  | 0xefc00000           | Page table for kernel stack               |
++-----+----------------------+-------------------------------------------+
+|958  | 0xef800000           | Page table for memory-mapped I/O          |
++-----+----------------------+-------------------------------------------+
+|957  | 0xef400000           | Page table for phys addr of pages (2)     |
++-----+----------------------+-------------------------------------------+
+|956  | 0xef000000           | Page table for phys addr of pages (1)     |
++-----+----------------------+-------------------------------------------+
+|.    | .                    | Not Mapped                                |
++-----+----------------------+-------------------------------------------+
+|2    | 0x00800000           | Not Mapped                                |
++-----+----------------------+-------------------------------------------+
+|1    | 0x00400000           | Not Mapped                                |
++-----+----------------------+-------------------------------------------+
+|0    | 0x00000000           | [see next question]                       |
++-----+----------------------+-------------------------------------------+
+
+Exercise 5 Qb:
+User programs will not have the appropriate privilege level to access the kernel memory space.
+The page tables containing kernel memory mappings have PTE_P | PTE_W privilege which is lower than user privilege.
+If a user attempts to access the kernel memory a page fault will occur.
+
+Exercise 5 Qc:
+A maximum of 256 MB of memory can be mapped, and therefore supported. Physical memory can be remapped at 0xf0000000 and above.
+64 Page Tables each of 4MB can be created, 64 * 4MB = 256MB.
+
+Exercise 5 Qd:
+The overhead for pages is 512KB for 256MB. The overhead for the page directory is 4KB. The overhead for page tables is 4096KB.
+In total the overhead is 4612KB.
+
+Exercise 5 Qe:
+The execution runs at an EIP above KERNBASE after 0xf010002d: jmp *%eax.
+Execution at low EIP initially is possible due to initial 4MB virtual to physical memory mapping for boot.
+The transition is necessary because the kernel is supposed to be executed at a high address to function.

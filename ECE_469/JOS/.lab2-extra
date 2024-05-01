@@ -1,0 +1,3 @@
+We have made two commands. 
+showmappings that would get a range of numbers and get the mapping and the permissions of those addresses
+setperms that would take in a bitpattern input to set the permissions and will read the perms of the address if no bitpattern is provided
